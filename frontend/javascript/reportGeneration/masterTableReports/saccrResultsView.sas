@@ -81,6 +81,30 @@
     put '  },';
 
 
+    put '  // Builds the compact Total Variance summary card shown above the Comparison Report table';
+    put '  renderVarianceCard(totalVariance, reviewCount, totalRecords) {';
+    put '    const absVal = Math.abs(totalVariance);';
+    put '    const sign = totalVariance >= 0 ? "+" : "";';
+    put '    const formatted = absVal >= 1000000';
+    put '      ? sign + (totalVariance / 1000000).toFixed(2) + "M"';
+    put '      : sign + totalVariance.toLocaleString(undefined, { maximumFractionDigits: 2 });';
+    put '    let html = "<div class=\"comparison-variance-card\">";';
+    put '    html += "<div class=\"comparison-variance-icon\"><i class=\"fas fa-balance-scale\"></i></div>";';
+    put '    html += "<div class=\"comparison-variance-label\">Total Variance</div>";';
+    put '    html += "<div class=\"comparison-variance-stats\">";';
+    put '    html += "<div class=\"comparison-variance-stat\">";';
+    put '    html += "<div class=\"comparison-variance-stat-value\">" + escapeHtml(formatted) + "</div>";';
+    put '    html += "<div class=\"comparison-variance-stat-label\">EAD Variance</div></div>";';
+    put '    html += "<div class=\"comparison-variance-stat\">";';
+    put '    html += "<div class=\"comparison-variance-stat-value\">" + escapeHtml(String(reviewCount)) + "</div>";';
+    put '    html += "<div class=\"comparison-variance-stat-label\">For Review</div></div>";';
+    put '    html += "<div class=\"comparison-variance-stat\">";';
+    put '    html += "<div class=\"comparison-variance-stat-value\">" + escapeHtml(String(totalRecords)) + "</div>";';
+    put '    html += "<div class=\"comparison-variance-stat-label\">Records</div></div>";';
+    put '    html += "</div></div>";';
+    put '    return html;';
+    put '  },';
+    put '';
     put '  // Classifies a comparison row as New/Matched/Minor Diff/Review by EAD variance';
     put '  computeComparisonStatus(row) {';
     put '    const prev = this.toNumber(row.ead_previous);';
@@ -179,13 +203,16 @@
     put '  },';
 
 
-    put '  // Builds the Comparison Report tab with current-vs-previous EAD/RWA and a status badge';
+    put '  // Builds the Comparison Report tab: variance summary card then the full table';
     put '  buildTab2(data) {';
     put '    const rows = this.normalizeRows(data.comparison_report);';
     put '    rows.forEach(row => {';
     put '      row.__badges = { status: this.renderBadge(this.computeComparisonStatus(row)) };';
     put '    });';
-    put '    return this.renderTable(this.COLUMN_MAPS.comparison, rows, [{ key: "status", label: "Status" }]);';
+    put '    const totalVariance = rows.reduce((sum, r) => sum + (this.toNumber(r.ead_diff) || 0), 0);';
+    put '    const reviewCount = rows.filter(r => this.computeComparisonStatus(r) === "Review").length;';
+    put '    const varianceCard = rows.length ? this.renderVarianceCard(totalVariance, reviewCount, rows.length) : "";';
+    put '    return varianceCard + this.renderTable(this.COLUMN_MAPS.comparison, rows, [{ key: "status", label: "Status" }]);';
     put '  },';
 
 
@@ -207,11 +234,14 @@
 
 
     put '  // Assembles the 3-tab nav and panels for SACCR Summary/Comparison/Exception';
-    put '  renderTabs(data) {';
+    put '  renderTabs(data, reportId) {';
     put '    const tab1 = this.buildTab1(data);';
     put '    const tab2 = this.buildTab2(data);';
     put '    const tab3 = this.buildTab3(data);';
-    put '    let html = "<div class=\"results-panel-header\"><div class=\"results-panel-title\">Results</div></div>";';
+    put '    let html = "<div class=\"results-panel-header\">";';
+    put '    html += "<div class=\"results-panel-title\">Results</div>";';
+    put '    html += "<button class=\"btn btn-secondary results-back-btn\" onclick=\"MTSaccrResults.goBack(&apos;" + reportId + "&apos;)\"><i class=\"fas fa-arrow-left\"></i> Back</button>";';
+    put '    html += "</div>";';
     put '    html += "<div class=\"report-tabs\">";';
     put '    html += "<button class=\"report-tab active\" onclick=\"MTSaccrResults.switchTab(this, &apos;saccr-summary&apos;)\">SACCR Summary</button>";';
     put '    html += "<button class=\"report-tab\" onclick=\"MTSaccrResults.switchTab(this, &apos;saccr-comparison&apos;)\">Comparison Report</button>";';
@@ -240,7 +270,15 @@
     put '  },';
     
 
-    put '  // Entry point: parses the SP response and injects the tabbed panel into the DOM';
+    put '  // Hides the results panel and restores the prompt-card grid so the user can re-run';
+    put '  goBack(reportId) {';
+    put '    const container = document.getElementById(reportId + "-results");';
+    put '    if (container) container.style.display = "none";';
+    put '    const promptCards = document.getElementById(reportId + "-prompt-cards");';
+    put '    if (promptCards) promptCards.style.display = "block";';
+    put '  },';
+    put '';
+    put '  // Entry point: parses the SP response, hides prompt cards, and shows the results panel';
     put '  render(reportId, data) {';
     put '    const container = document.getElementById(reportId + "-results");';
     put '    if (!container) {';
@@ -258,7 +296,9 @@
     put '        return;';
     put '      }';
     put '    }';
-    put '    container.innerHTML = this.renderTabs(parsed || {});';
+    put '    container.innerHTML = this.renderTabs(parsed || {}, reportId);';
+    put '    const promptCards = document.getElementById(reportId + "-prompt-cards");';
+    put '    if (promptCards) promptCards.style.display = "none";';
     put '    container.style.display = "block";';
     put '    container.scrollIntoView({ behavior: "smooth", block: "nearest" });';
     put '  }';

@@ -9,10 +9,17 @@
     put '// Renders all prompt cards plus a hidden results container for a report route';
     put 'function buildMasterTableRoute(routeKey) {';
     put '  const cards = (masterTableReportsConfig[routeKey] || []).map(getpromptHTML).join("");';
+    put '  const promptCardsId = routeKey.replace("#", "") + "-prompt-cards";';
     put '  const resultsContainerId = routeKey.replace("#", "") + "-results";';
     put '  return "<div style=\"max-width: 1200px; margin: 0 auto; padding: 20px;\">" +';
+    put '    "<div id=\"" + promptCardsId + "\" style=\"display: block;\">" +';
+    put '    "<div style=\"margin-bottom: 20px;\">" +';
+    put '    "<button onclick=\"showRoute(&apos;#risk-categories&apos;)\" style=\"padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 0.9rem; background: #6b7280; color: white; transition: all 0.3s ease;\" " +';
+    put '    "onmouseover=\"this.style.background=&apos;#4b5563&apos;\" onmouseout=\"this.style.background=&apos;#6b7280&apos;\"><i class=\"fas fa-arrow-left\"></i> Back</button>" +';
+    put '    "</div>" +';
     put '    "<div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; margin-bottom: 30px;\">" +';
     put '    cards + "</div>" +';
+    put '    "</div>" +';
     put '    "<div id=\"" + resultsContainerId + "\" class=\"results-panel\" style=\"display:none;\"></div>" +';
     put '    "</div>";';
     put '}';

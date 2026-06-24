@@ -234,4 +234,17 @@
 
     put '.results-empty-state { text-align: center; padding: 40px 20px; color: #6b7280; }';
     put '.results-empty-state i { font-size: 2rem; margin-bottom: 10px; display: block; color: #d1d5db; }';
+
+    /* Back button in the results panel header */
+    put '.results-back-btn { font-size: 0.85rem; padding: 7px 14px; border-radius: 6px; }';
+
+    /* Comparison tab: compact Total Variance summary card */
+    put '.comparison-variance-card { display: flex; align-items: stretch; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); border-radius: 10px; margin-bottom: 16px; overflow: hidden; box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3); }';
+    put '.comparison-variance-icon { padding: 14px 16px; font-size: 1.3rem; color: rgba(255, 255, 255, 0.9); display: flex; align-items: center; border-right: 1px solid rgba(255, 255, 255, 0.2); }';
+    put '.comparison-variance-label { padding: 14px 16px; font-weight: 700; font-size: 0.8rem; color: white; text-transform: uppercase; letter-spacing: 0.8px; display: flex; align-items: center; border-right: 1px solid rgba(255, 255, 255, 0.2); white-space: nowrap; }';
+    put '.comparison-variance-stats { display: flex; flex: 1; background: white; }';
+    put '.comparison-variance-stat { flex: 1; padding: 10px 14px; text-align: center; border-right: 1px solid #f3f4f6; }';
+    put '.comparison-variance-stat:last-child { border-right: none; }';
+    put '.comparison-variance-stat-value { font-size: 1.05rem; font-weight: 700; color: #1f2937; line-height: 1.2; }';
+    put '.comparison-variance-stat-label { font-size: 0.7rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.4px; margin-top: 2px; }';
 %mend generate_results_panel_styles;
