@@ -1,7 +1,9 @@
 
 
+/* Emits the shared modal helper functions: showModalMessage, getModalTheme, escapeHtml */
 %macro generate_javascript_modal;
 
+    put '// Populates and opens #reportModal with a themed title/message';
     put 'function showModalMessage(payload) {';
     put '  var modal = document.getElementById("reportModal");';
     put '  var modalTitle = document.getElementById("modalTitle");';
@@ -24,6 +26,7 @@
     put '  modal.classList.add("show");';
     put '}';
 
+    put '// Maps a notification type to its modal background/text colors';
     put 'function getModalTheme(type) {';
     put '  var themes = {';
     put '    error: { bg: "#fee2e2", text: "#b91c1c" },';
@@ -34,6 +37,7 @@
     put '  return themes[type] || { bg: "#f9fafb", text: "#1f2937" };';
     put '}';
 
+    put '// Escapes HTML-special characters before inserting untrusted text into the DOM';
     put 'function escapeHtml(str) {';
     put '  if (str === null || str === undefined) return "";';
     put '  return String(str)';

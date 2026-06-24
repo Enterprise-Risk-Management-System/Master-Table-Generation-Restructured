@@ -4,12 +4,14 @@
    Renders the "Master Table Preparation" landing page from riskModulesConfig
    ============================================================================ */
 %macro buildRiskCategory;
+    put '// Renders the Master Table Preparation landing page from riskModulesConfig';
     put 'function getRiskCategoriesHTML() {';
     put '  const modules = riskModulesConfig.map(buildRiskModuleCard).join("");';
     put '  return "<h2 style=\"margin-bottom: 20px; color: #1f2937; font-size: 1.5rem;\">Master Table Preparation</h2>" +';
     put '    "<div class=\"risk-modules\">" + modules + "</div>";';
     put '}';
 
+    put '// Renders a single clickable risk-category tile';
     put 'function buildRiskModuleCard(config) {';
     put '  const stats = (config.stats || []).map(buildModuleStat).join("");';
     put '  const routeAttr = config.route ? " onclick=\"showRoute(&apos;" + config.route + "&apos;)\"" : "";';
@@ -24,6 +26,7 @@
     put '  return html;';
     put '}';
 
+    put '// Renders a single stat-value/stat-label pair within a tile';
     put 'function buildModuleStat(stat) {';
     put '  return "<div class=\"stat-item\"><div class=\"stat-value\">" + stat.value + "</div><div class=\"stat-label\">" + stat.label + "</div></div>";';
     put '}';

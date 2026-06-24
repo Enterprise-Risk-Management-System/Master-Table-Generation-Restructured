@@ -22,17 +22,6 @@
 %mend generate_navbar;
 
 /* ============================================================================
-   SIDEBAR COMPONENT
-   ============================================================================ */
-%macro generate_sidebar;
-    put '<aside class="sidebar" id="sidebar">';
-    put '<ul class="sidebar-menu">';
-    put '<li><a href="#risk-categories" class="active"><i class="fas fa-layer-group"></i>Risk Categories</a></li>';
-    put '</ul>';
-    put '</aside>';
-%mend generate_sidebar;
-
-/* ============================================================================
    PAGE HEADER COMPONENT
    ============================================================================ */
 %macro generate_page_header;

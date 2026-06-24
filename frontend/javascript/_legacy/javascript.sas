@@ -11,8 +11,11 @@
    ============================================================================ */
 %macro generate_javascript_utils;
     put '<script>';
+    put '// Shows the full-screen loading overlay';
     put 'function showLoading() { document.getElementById("loading").style.display = "flex"; }';
+    put '// Hides the full-screen loading overlay';
     put 'function hideLoading() { document.getElementById("loading").style.display = "none"; }';
+    put '// Displays a transient top-right notification banner';
     put 'function showNotification(message, type) {';
     put '  if (!type) type = "success";';
     put '  var notification = document.getElementById("notification");';
@@ -22,6 +25,7 @@
     put '  notification.classList.add("show");';
     put '  setTimeout(function() { notification.classList.remove("show"); }, 4000);';
     put '}';
+    put '// Hides the report details modal';
     put 'function closeModal() { document.getElementById("reportModal").classList.remove("show"); }';
     put '</script>';
 %mend generate_javascript_utils;
@@ -31,6 +35,7 @@
    ============================================================================ */
 %macro generate_javascript_animations;
     put '<script>';
+    put '// Kicks off the count-up animation for each dashboard stat tile';
     put 'function animateStats() {';
     put '  var stats = [';
     put '    { element: "total-reports", target: 156, suffix: "" },';
@@ -42,6 +47,7 @@
     put '    animateNumber(stats[i].element, stats[i].target, stats[i].suffix);';
     put '  }';
     put '}';
+    put '// Animates a single stat element from 0 up to its target value';
     put 'function animateNumber(elementId, target, suffix) {';
     put '  var element = document.getElementById(elementId);';
     put '  var duration = 2000;';
@@ -63,6 +69,7 @@
     put '    }';
     put '  }, 16);';
     put '}';
+    put '// Randomly bumps the "total reports" counter (demo data)';
     put 'function updateStats() {';
     put '  var randomIncrement = Math.random() * 5;';
     put '  var currentReports = parseInt(document.getElementById("total-reports").textContent.replace(",", ""));';
@@ -76,6 +83,7 @@
    ============================================================================ */
 %macro generate_javascript_modal;
     put '<script>';
+    put '// Populates and opens the modal with a report''s summary/detail JSON';
     put 'function displayReportDetails(reportResult) {';
     put '  var modal = document.getElementById("reportModal");';
     put '  var modalTitle = document.getElementById("modalTitle");';
@@ -99,6 +107,7 @@
     put '  modalBody.innerHTML = html;';
     put '  modal.classList.add("show");';
     put '}';
+    put '// Formats a number as a compact currency/locale string for display';
     put 'function formatValue(value) {';
     put '  if (typeof value === "number") {';
     put '    if (value >= 1000000) {';
@@ -111,6 +120,7 @@
     put '  }';
     put '  return value;';
     put '}';
+    put '// Turns a camelCase summary key into a Title Case label';
     put 'function formatLabel(key) {';
     put '  return key.replace(/([A-Z])/g, " $1").replace(/^./, function(str) { return str.toUpperCase(); });';
     put '}';
@@ -122,6 +132,7 @@
     put '</script>';
 %mend generate_javascript_modal;
 
+/* Static container div that the legacy router used to swap route content into */
 %macro generate_route_container;
     put '<div class="dashboard-grid">';
     put '<div id="main-panel" class="main-panel">';

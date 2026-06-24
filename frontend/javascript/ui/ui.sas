@@ -6,6 +6,7 @@
 %macro generate_javascript_ui;
     put '// MT UI Module';
     put 'const MTUI = {';
+    put '  // Kicks off the count-up animation for each dashboard stat tile';
     put '  animateStats() {';
     put '    const stats = [';
     put '      { element: "total-reports", target: 156, suffix: "" },';
@@ -15,6 +16,7 @@
     put '    ];';
     put '    stats.forEach(stat => this.animateNumber(stat.element, stat.target, stat.suffix));';
     put '  },';
+    put '  // Animates a single stat element from 0 up to its target value';
     put '  animateNumber(elementId, target, suffix) {';
     put '    const element = document.getElementById(elementId);';
     put '    if (!element) return;';
@@ -37,6 +39,7 @@
     put '      }';
     put '    }, 16);';
     put '  },';
+    put '  // Randomly bumps the "total reports" counter (demo data)';
     put '  updateStats() {';
     put '    const totalReportsElement = document.getElementById("total-reports");';
     put '    if (!totalReportsElement) return;';
@@ -44,6 +47,7 @@
     put '    const currentReports = parseInt(totalReportsElement.textContent.replace(",", ""));';
     put '    totalReportsElement.textContent = (currentReports + Math.floor(randomIncrement)).toLocaleString();';
     put '  },';
+    put '  // Wires modal-close and Escape key listeners once on load';
     put '  initializeEventListeners() {';
     put '    const modal = document.getElementById("reportModal");';
     put '    if (modal) {';
@@ -54,16 +58,12 @@
     put '    document.addEventListener("keydown", (e) => {';
     put '      if (e.key === "Escape") MTUtils.closeModal();';
     put '    });';
-    put '    window.addEventListener("resize", MTUtils.debounce(() => {';
-    put '      const sidebar = document.getElementById("sidebar");';
-    put '      if (window.innerWidth > 1024 && sidebar) {';
-    put '        sidebar.classList.remove("show");';
-    put '      }';
-    put '    }, 250));';
     put '  },';
+    put '  // Delays then triggers the dashboard stat count-up animation';
     put '  initializeAnimations() {';
     put '    setTimeout(() => this.animateStats(), 500);';
     put '  },';
+    put '  // Pre-fills a report''s empty date inputs with today''s date';
     put '  setDefaultDates(reportId) {';
     put '    const today = MTUtils.getTodayDate();';
     put '    const dateInputs = document.querySelectorAll(''input[type="date"]'');';

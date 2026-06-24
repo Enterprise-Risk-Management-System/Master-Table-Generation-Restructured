@@ -10,7 +10,6 @@
 
     /* Layout Components */
     %generate_navbar_styles;
-    %generate_sidebar_styles;
     %generate_main_content_styles;
 
     /* UI Components */
@@ -30,6 +29,9 @@
 
     /* Dashboard Table Styles */
     %generate_dashboard_table_styles;
+
+    /* Report Results Panel (tabs, extra status badges) */
+    %generate_results_panel_styles;
 
     put '</style>';
 %mend generate_css_styles;
@@ -67,24 +69,10 @@
 %mend generate_navbar_styles;
 
 /* ============================================================================
-   SIDEBAR STYLES
-   ============================================================================ */
-%macro generate_sidebar_styles;
-    put '.sidebar { position: fixed; left: 0; top: 70px; width: 250px; height: calc(100vh - 70px); background: white;';
-    put '  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); overflow-y: auto; z-index: 999; }';
-    put '.sidebar-menu { padding: 20px 0; }';
-    put '.sidebar-menu li { margin-bottom: 5px; }';
-    put '.sidebar-menu a { display: flex; align-items: center; gap: 12px; padding: 12px 25px; color: #374151; transition: all 0.3s ease; border-left: 3px solid transparent; }';
-    put '.sidebar-menu a:hover { background: #f3f4f6; color: #1f2937; border-left-color: #3b82f6; }';
-    put '.sidebar-menu a.active { background: #eff6ff; color: #1d4ed8; border-left-color: #3b82f6; font-weight: 600; }';
-    put '.sidebar-menu i { width: 20px; text-align: center; }';
-%mend generate_sidebar_styles;
-
-/* ============================================================================
    MAIN CONTENT STYLES
    ============================================================================ */
 %macro generate_main_content_styles;
-    put '.main-content { margin-left: 250px; margin-top: 70px; padding: 30px; }';
+    put '.main-content { margin-top: 70px; padding: 30px; }';
     put '.page-header { background: white; border-radius: 12px; padding: 30px; margin-bottom: 30px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }';
     put '.page-title { font-size: 2rem; color: #1f2937; margin-bottom: 10px; font-weight: 600; }';
     put '.page-subtitle { color: #6b7280; font-size: 1.1rem; }';
@@ -177,9 +165,6 @@
    ============================================================================ */
 %macro generate_responsive_styles;
     put '@media (max-width: 1024px) {';
-    put '  .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; }';
-    put '  .sidebar.show { transform: translateX(0); }';
-    put '  .main-content { margin-left: 0; }';
     put '  .dashboard-grid { grid-template-columns: 1fr; }';
     put '}';
     put '@media (max-width: 768px) {';
@@ -213,3 +198,40 @@
     put '.status-badge.danger { background: #fee2e2; color: #991b1b; }';
     put '.btn-sm { padding: 6px 12px; font-size: 0.8rem; }';
 %mend generate_dashboard_table_styles;
+
+/* ============================================================================
+   REPORT RESULTS PANEL STYLES
+   Tabbed results panel (SACCR/CVA and future report outputs) plus the
+   extra status-badge variants used by the comparison/exception tabs.
+   ============================================================================ */
+%macro generate_results_panel_styles;
+    put '.results-panel { background: white; border-radius: 12px; padding: 25px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); }';
+    put '.results-panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }';
+    put '.results-panel-title { font-size: 1.2rem; font-weight: 600; color: #1f2937; }';
+    put '.results-panel-meta { color: #6b7280; font-size: 0.85rem; }';
+
+    put '.report-tabs { display: flex; gap: 5px; border-bottom: 2px solid #e5e7eb; margin-bottom: 20px; }';
+    put '.report-tab { padding: 10px 18px; border: none; background: transparent; cursor: pointer; font-weight: 500; font-size: 0.9rem; color: #6b7280; border-bottom: 3px solid transparent; transition: all 0.2s ease; margin-bottom: -2px; }';
+    put '.report-tab:hover { color: #1f2937; }';
+    put '.report-tab.active { color: #1d4ed8; border-bottom-color: #3b82f6; font-weight: 600; }';
+    put '.report-tab-panel { display: none; }';
+    put '.report-tab-panel.active { display: block; }';
+
+    put '.results-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 20px; }';
+
+    put '.status-badge.matched { background: #dcfce7; color: #166534; }';
+    put '.status-badge.minor-diff { background: #fef3c7; color: #92400e; }';
+    put '.status-badge.review { background: #fee2e2; color: #991b1b; }';
+    put '.status-badge.new { background: #dbeafe; color: #1e40af; }';
+
+    put '.status-badge.high { background: #fee2e2; color: #991b1b; }';
+    put '.status-badge.medium { background: #fef3c7; color: #92400e; }';
+    put '.status-badge.low { background: #f3f4f6; color: #374151; }';
+
+    put '.status-badge.open { background: #fee2e2; color: #991b1b; }';
+    put '.status-badge.pending { background: #fef3c7; color: #92400e; }';
+    put '.status-badge.resolved { background: #dcfce7; color: #166534; }';
+
+    put '.results-empty-state { text-align: center; padding: 40px 20px; color: #6b7280; }';
+    put '.results-empty-state i { font-size: 2rem; margin-bottom: 10px; display: block; color: #d1d5db; }';
+%mend generate_results_panel_styles;

@@ -6,13 +6,18 @@
    Driven entirely by masterTableReportsConfig - no per-route markup.
    ============================================================================ */
 %macro buildMasterTableReport;
+    put '// Renders all prompt cards plus a hidden results container for a report route';
     put 'function buildMasterTableRoute(routeKey) {';
     put '  const cards = (masterTableReportsConfig[routeKey] || []).map(getpromptHTML).join("");';
+    put '  const resultsContainerId = routeKey.replace("#", "") + "-results";';
     put '  return "<div style=\"max-width: 1200px; margin: 0 auto; padding: 20px;\">" +';
     put '    "<div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; margin-bottom: 30px;\">" +';
-    put '    cards + "</div></div>";';
+    put '    cards + "</div>" +';
+    put '    "<div id=\"" + resultsContainerId + "\" class=\"results-panel\" style=\"display:none;\"></div>" +';
+    put '    "</div>";';
     put '}';
 
+    put '// Renders a single report card (title, frequency, fields, Run/History buttons)';
     put 'function getpromptHTML(report) {';
     put '  const { id: reportId, title, description, frequency, fields } = report;';
     put '  let html = "<div style=\"background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); border: 2px solid transparent; transition: all 0.3s ease; cursor: pointer;\" ";';

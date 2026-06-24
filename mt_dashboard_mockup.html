@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Master Table Generation — Visual Mockup</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Inter", "Arial", sans-serif; background: #f8fafc; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+.navbar { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); padding: 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1); position: fixed; top:0; left:0; right:0; z-index:1000; }
+.nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+.nav-brand { display: flex; align-items: center; gap: 15px; color: white; height: 70px; }
+.nav-brand .logo { background: rgba(255,255,255,0.2); padding: 8px 12px; border-radius: 8px; }
+.nav-menu { display: flex; gap: 30px; }
+.nav-menu a { color: white; padding: 25px 0; display: block; font-weight: 500; transition: all .3s ease; position: relative; }
+.nav-menu a:hover { color: #93c5fd; }
+.nav-menu a::after { content: ""; position: absolute; bottom:0; left:0; width:0; height:3px; background:#93c5fd; transition:width .3s ease; }
+.nav-menu a:hover::after { width: 100%; }
+.nav-user { display: flex; align-items: center; gap: 15px; color: white; }
+.user-avatar { width:35px; height:35px; border-radius:50%; background: rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; }
+.user-info { display: flex; flex-direction: column; }
+.user-name { font-weight: 600; font-size: .9rem; }
+.user-role { font-size: .8rem; opacity: .8; }
+
+.main-content { margin-top: 70px; padding: 30px; }
+.page-header { background: white; border-radius: 12px; padding: 30px; margin-bottom: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.page-title { font-size: 2rem; color: #1f2937; margin-bottom: 10px; font-weight: 600; }
+.page-subtitle { color: #6b7280; font-size: 1.1rem; }
+.breadcrumb { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font-size: .9rem; color: #6b7280; }
+.breadcrumb a { color: #3b82f6; }
+.breadcrumb a:hover { text-decoration: underline; }
+.dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px; }
+.main-panel { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+
+.risk-modules { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 20px; }
+.risk-module { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border: 2px solid transparent; transition: all .3s ease; cursor: pointer; position: relative; overflow: hidden; }
+.risk-module:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-color: #3b82f6; }
+.module-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+.module-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: white; flex-shrink: 0; }
+.module-title { font-size: 1.2rem; font-weight: 600; color: #1f2937; }
+.module-description { color: #6b7280; font-size: .9rem; line-height: 1.5; margin-bottom: 20px; }
+.module-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.stat-item { text-align: center; padding: 15px; background: #f9fafb; border-radius: 8px; }
+.stat-value { font-size: 1.3rem; font-weight: 700; color: #1f2937; margin-bottom: 5px; }
+.stat-label { font-size: .8rem; color: #6b7280; text-transform: uppercase; letter-spacing: .5px; }
+
+.regulatory { background: linear-gradient(135deg, #dc2626, #ef4444); }
+.credit { background: linear-gradient(135deg, #059669, #10b981); }
+.operational { background: linear-gradient(135deg, #0891b2, #06b6d4); }
+.market { background: linear-gradient(135deg, #7c3aed, #8b5cf6); }
+.liquidity { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
+.icaap { background: linear-gradient(135deg, #059669, #34d399); }
+.ilaap { background: linear-gradient(135deg, #ec4899, #f472b6); }
+
+.modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
+.modal.show { display: flex; }
+.modal-content { background: white; border-radius: 20px; padding: 30px; max-width: 800px; width: 90%; max-height: 80vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #e5e7eb; }
+.modal-title { font-size: 1.5rem; font-weight: 600; color: #1f2937; }
+.modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6b7280; transition: color .3s ease; }
+.modal-close:hover { color: #1f2937; }
+
+.notification { position: fixed; top: 90px; right: 20px; color: white; padding: 15px 20px; border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform: translateX(400px); transition: transform .3s ease; z-index: 2001; display: flex; align-items: center; gap: 10px; }
+.notification.success { background: linear-gradient(135deg, #059669, #10b981); }
+.notification.error { background: linear-gradient(135deg, #dc2626, #ef4444); }
+.notification.warning { background: linear-gradient(135deg, #d97706, #f59e0b); }
+.notification.show { transform: translateX(0); }
+
+.btn { padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all .3s ease; font-size: .9rem; }
+.btn-primary { background: #3b82f6; color: white; }
+.btn-primary:hover { background: #2563eb; }
+.btn-secondary { background: #6b7280; color: white; }
+.btn-secondary:hover { background: #4b5563; }
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.loading { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
+.loading.show { display: flex; }
+.spinner { width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.3); border-top: 4px solid #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; }
+
+.dashboard-table-container { overflow-x: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+.dashboard-table { width: 100%; border-collapse: collapse; background: white; font-size: .85rem; }
+.dashboard-table th { background: #f8fafc; padding: 15px 12px; text-align: left; font-weight: 600; color: #374151; border-bottom: 2px solid #e5e7eb; white-space: nowrap; }
+.dashboard-table td { padding: 12px; border-bottom: 1px solid #f3f4f6; color: #374151; white-space: nowrap; }
+.dashboard-table tr:hover { background: #f9fafb; }
+.status-badge { padding: 4px 8px; border-radius: 6px; font-size: .75rem; font-weight: 500; text-transform: uppercase; letter-spacing: .5px; }
+.status-badge.matched { background: #dcfce7; color: #166534; }
+.status-badge.minor-diff { background: #fef3c7; color: #92400e; }
+.status-badge.review { background: #fee2e2; color: #991b1b; }
+.status-badge.new { background: #dbeafe; color: #1e40af; }
+.status-badge.high { background: #fee2e2; color: #991b1b; }
+.status-badge.medium { background: #fef3c7; color: #92400e; }
+.status-badge.low { background: #f3f4f6; color: #374151; }
+.status-badge.open { background: #fee2e2; color: #991b1b; }
+
+.results-panel { background: white; border-radius: 12px; padding: 25px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+.results-panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.results-panel-title { font-size: 1.2rem; font-weight: 600; color: #1f2937; }
+.results-panel-meta { color: #6b7280; font-size: .85rem; }
+.report-tabs { display: flex; gap: 5px; border-bottom: 2px solid #e5e7eb; margin-bottom: 20px; }
+.report-tab { padding: 10px 18px; border: none; background: transparent; cursor: pointer; font-weight: 500; font-size: .9rem; color: #6b7280; border-bottom: 3px solid transparent; transition: all .2s ease; margin-bottom: -2px; }
+.report-tab:hover { color: #1f2937; }
+.report-tab.active { color: #1d4ed8; border-bottom-color: #3b82f6; font-weight: 600; }
+.report-tab-panel { display: none; }
+.report-tab-panel.active { display: block; }
+.results-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 15px; margin-bottom: 20px; }
+.stat-card { background: white; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #3b82f6; }
+.stat-number { font-size: 1.6rem; font-weight: 700; color: #1f2937; margin-bottom: 5px; }
+.stat-text { color: #6b7280; font-size: .85rem; }
+
+.report-card { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 2px solid transparent; transition: all .3s ease; }
+.report-card:hover { border-color: #3b82f6; }
+.report-card-head { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; }
+.report-card-icon { width: 50px; height: 50px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: white; flex-shrink: 0; }
+.report-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; margin-bottom: 30px; }
+.report-field-box { margin-bottom: 20px; padding: 15px; background: #f9fafb; border-radius: 8px; }
+.report-field-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #e5e7eb; }
+.report-field-row:last-child { border-bottom: none; }
+.report-field-row input, .report-field-row select { color: #6b7280; font-size: 14px; border: none; background: transparent; text-align: right; }
+
+.mockup-banner { background: #1f2937; color: #93c5fd; text-align: center; padding: 8px; font-size: .8rem; position: fixed; bottom: 0; left: 0; right: 0; z-index: 3000; }
+</style>
+</head>
+<body>
+
+<div class="loading" id="loading"><div class="spinner"></div></div>
+<div class="notification" id="notification"><i class="fas fa-check-circle"></i><span id="notification-text">Report generated successfully!</span></div>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="#" class="nav-brand">
+      <div class="logo"><i class="fas fa-shield-alt"></i></div>
+      <h1 style="font-size:1.5rem;font-weight:600;">Master Table Generation</h1>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="#risk-categories" onclick="showRoute('risk-categories');return false;">Risk Category</a></li>
+    </ul>
+    <div class="nav-user">
+      <div class="user-avatar"><i class="fas fa-user"></i></div>
+      <div class="user-info">
+        <div class="user-name">sasuser01</div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="main-content">
+  <div class="page-header">
+    <div class="breadcrumb">
+      <a href="#" onclick="showRoute('risk-categories');return false;">Dashboard</a>
+      <i class="fas fa-chevron-right"></i>
+      <span id="breadcrumb-current">Risk Management</span>
+    </div>
+    <h1 class="page-title">Risk Management Data Preparation</h1>
+    <p class="page-subtitle">Comprehensive overview of enterprise risk metrics and compliance status</p>
+  </div>
+
+  <div class="dashboard-grid">
+    <div id="main-panel" class="main-panel"></div>
+  </div>
+</main>
+
+<div class="modal" id="reportModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="modal-title" id="modalTitle">Report Details</h3>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div class="mockup-banner">STATIC VISUAL MOCKUP — reconstructed from the SAS source (no live SAS backend). Click cards / Run / tabs to explore.</div>
+
+<script>
+const riskModules = [
+  { key:'regulatory', icon:'fas fa-gavel', title:'SACCR and CVA', route:'saccr-cva',
+    desc:'Comprehensive regulatory compliance reports for SACCR and CVA calculations.', stats:[] },
+  { key:'credit', icon:'fas fa-credit-card', title:'SAMA Q17', route:'sama-q17',
+    desc:'SAMA Q17 uploads and data preparation reporting.', stats:[] },
+  { key:'operational', icon:'fas fa-cogs', title:'IRRBB', route:'sama-p3',
+    desc:'Interest rate risk in the banking book (SAMA Pillar III) reporting.', stats:[] },
+  { key:'market', icon:'fas fa-chart-line', title:'Assets', route:'assets',
+    desc:'Market risk metrics including value-at-risk and volatility tracking.',
+    stats:[{value:'$45M',label:'VaR 95%'},{value:'12.5%',label:'Volatility'}] },
+  { key:'liquidity', icon:'fas fa-water', title:'Liabilities', route:'liability',
+    desc:'Liquidity coverage and high-quality liquid asset monitoring.',
+    stats:[{value:'145%',label:'LCR'},{value:'$850M',label:'HQLA'}] },
+  { key:'icaap', icon:'fas fa-balance-scale', title:'Off Balance Sheet', route:'offbalance',
+    desc:'Capital adequacy ratio and reconciliation reporting.',
+    stats:[{value:'18.5%',label:'CAR'},{value:'$2.8B',label:'Capital'}] },
+  { key:'ilaap', icon:'fas fa-tint', title:'Customer', route:'customer',
+    desc:'Net stable funding ratio and stable funding analysis.',
+    stats:[{value:'125%',label:'NSFR'},{value:'$1.2B',label:'Stable Funding'}] },
+];
+
+const reportRoutes = {
+  'saccr-cva': { title:'SACCR and CVA', subtitle:'Counterparty credit risk regulatory reporting', cards:[
+    { id:'saccr-cva', title:'SACCR and CVA', desc:'Standardized Approach for Counterparty Credit Risk and Credit Valuation Adjustment report.', freq:'Monthly', fields:[{label:'As of Date',type:'date'}], hasResults:true }
+  ]},
+  'sama-q17': { title:'SAMA Q17', subtitle:'SAMA regulatory upload and data preparation', cards:[
+    { id:'q17-upload', title:'SAMA Q17 Uploads', desc:'Upload SAMA Q17 report packs for submission.', freq:'Quarterly', fields:[
+      {label:'As of Date', type:'date'}, {label:'Report Pack', type:'select', opts:['Pack A','Pack B','Pack C','Pack D']}, {label:'Upload Sheet', type:'file'} ] },
+    { id:'q17-prep', title:'SAMA Q17 Data Preparation', desc:'Prepare underlying data for the SAMA Q17 submission.', freq:'Quarterly', fields:[
+      {label:'Run Type', type:'select', opts:['Full','Incremental']}, {label:'As of Date', type:'date'}, {label:'London Date', type:'date'} ] }
+  ]},
+  'sama-p3': { title:'IRRBB', subtitle:'SAMA Pillar III interest rate risk reporting', cards:[
+    { id:'sama-p3', title:'IRRBB', desc:'Interest rate risk in the banking book report.', freq:'Monthly', fields:[{label:'As of Date',type:'date'}] }
+  ]},
+  'assets': { title:'Assets', subtitle:'Asset reconciliation and adjustment processing', cards:[
+    { id:'assets-pre', title:'Assets before Adjustment', desc:'Raw asset master table prior to reconciliation adjustments.', freq:'Daily', fields:[
+      {label:'As of Date',type:'date'},{label:'IFRS9 Date',type:'date'},{label:'COMM ADJ Date',type:'date'},{label:'ANBI Date',type:'date'},{label:'London Date',type:'date'} ] },
+    { id:'assets-recon', title:'Assets Reconciliation Process', desc:'Reconciles asset positions across source systems.', freq:'Daily', fields:[
+      {label:'As of Date',type:'date'},{label:'IFRS9 Date',type:'date'},{label:'COMM ADJ Date',type:'date'},{label:'ANBI Date',type:'date'},{label:'London Date',type:'date'} ] }
+  ]},
+  'liability': { title:'Liabilities', subtitle:'Liability reconciliation processing', cards:[
+    { id:'liability-recon', title:'Liabilities Reconciliation Process', desc:'Reconciles liability positions across source systems.', freq:'Daily', fields:[{label:'As of Date',type:'date'},{label:'London Date',type:'date'}] }
+  ]},
+  'customer': { title:'Customer', subtitle:'Customer master table reporting', cards:[
+    { id:'customer-mt', title:'Customer MT', desc:'Customer master table extract.', freq:'Daily', fields:[{label:'As of Date',type:'date'}] }
+  ]},
+  'offbalance': { title:'Off Balance Sheet', subtitle:'Off balance sheet reconciliation processing', cards:[
+    { id:'offbalance-recon', title:'Off Balance Reconciliation Process', desc:'Reconciles off balance sheet positions.', freq:'Daily', fields:[{label:'As of Date',type:'date'},{label:'London Date',type:'date'},{label:'Firm & Non Firm Date',type:'date'}] }
+  ]}
+};
+
+function fieldHtml(reportId, f) {
+  if (f.type === 'select') {
+    return `<select><option>${f.opts.join('</option><option>')}</option></select>`;
+  }
+  if (f.type === 'file') {
+    return `<input type="file" style="text-align:left;max-width:160px;" />`;
+  }
+  return `<input type="date" value="2026-06-23" />`;
+}
+
+function renderRiskCategories() {
+  document.getElementById('breadcrumb-current').textContent = 'Risk Management';
+  let html = `<h2 style="margin-bottom:20px;color:#1f2937;font-size:1.5rem;">Master Table Preparation</h2><div class="risk-modules">`;
+  riskModules.forEach(m => {
+    html += `<div class="risk-module" onclick="showRoute('${m.route}')">
+      <div class="module-header">
+        <div class="module-icon ${m.key}"><i class="${m.icon}"></i></div>
+        <h3 class="module-title">${m.title}</h3>
+      </div>
+      <p class="module-description">${m.desc}</p>
+      <div class="module-stats">${m.stats.map(s=>`<div class="stat-item"><div class="stat-value">${s.value}</div><div class="stat-label">${s.label}</div></div>`).join('')}</div>
+    </div>`;
+  });
+  html += `</div>`;
+  document.getElementById('main-panel').innerHTML = html;
+}
+
+function renderReportRoute(routeKey) {
+  const route = reportRoutes[routeKey];
+  document.getElementById('breadcrumb-current').textContent = route.title;
+  let html = `<div style="max-width:1200px;margin:0 auto;">
+    <div style="margin-bottom:20px;">
+      <button class="btn btn-secondary" onclick="showRoute('risk-categories')"><i class="fas fa-arrow-left"></i> Back</button>
+    </div>
+    <div class="report-cards-grid">`;
+  route.cards.forEach(c => {
+    html += `<div class="report-card" data-report="${c.id}">
+      <div class="report-card-head">
+        <div class="report-card-icon"><i class="fas fa-chart-bar"></i></div>
+        <div style="flex:1;">
+          <h3 style="font-size:1.3rem;font-weight:600;color:#1f2937;margin-bottom:8px;">${c.title}</h3>
+          <p style="color:#6b7280;font-size:.9rem;line-height:1.5;">${c.desc}</p>
+        </div>
+      </div>
+      <div class="report-field-box">
+        <div class="report-field-row"><span style="font-weight:500;color:#374151;">Frequency:</span><span style="color:#6b7280;">${c.freq}</span></div>
+        ${c.fields.map(f=>`<div class="report-field-row"><span style="font-weight:500;color:#374151;">${f.label}:</span>${fieldHtml(c.id,f)}</div>`).join('')}
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-primary" onclick="runReport('${routeKey}','${c.id}',${!!c.hasResults})">Run</button>
+        <button class="btn btn-secondary" onclick="viewHistory('${c.title}')">View History</button>
+      </div>
+    </div>`;
+  });
+  html += `</div><div id="results-container"></div></div>`;
+  document.getElementById('main-panel').innerHTML = html;
+}
+
+function showRoute(routeKey) {
+  if (routeKey === 'risk-categories') {
+    renderRiskCategories();
+  } else {
+    renderReportRoute(routeKey);
+  }
+  window.scrollTo(0,0);
+}
+
+function runReport(routeKey, reportId, hasResults) {
+  showLoading();
+  setTimeout(() => {
+    hideLoading();
+    showNotification('Report generated successfully!', 'success');
+    if (hasResults) {
+      document.getElementById('results-container').innerHTML = buildSaccrResults();
+    } else {
+      document.getElementById('results-container').innerHTML = `<div class="results-panel">
+        <div class="results-panel-header"><div class="results-panel-title">Results</div><div class="results-panel-meta">Generated just now</div></div>
+        <div class="results-empty-state" style="text-align:center;padding:40px 20px;color:#6b7280;">
+          <i class="fas fa-check-circle" style="font-size:2rem;margin-bottom:10px;display:block;color:#10b981;"></i>
+          Report ${reportId} completed. Output file ready for download.
+        </div></div>`;
+    }
+  }, 900);
+}
+
+function buildSaccrResults() {
+  return `<div class="results-panel">
+    <div class="results-panel-header">
+      <div class="results-panel-title">Results</div>
+      <div class="results-panel-meta">As of 2026-06-23 &middot; Generated just now</div>
+    </div>
+    <div class="report-tabs">
+      <button class="report-tab active" onclick="switchTab(this,'tab-summary')">SACCR Summary</button>
+      <button class="report-tab" onclick="switchTab(this,'tab-comparison')">Comparison Report</button>
+      <button class="report-tab" onclick="switchTab(this,'tab-exception')">Exception Report</button>
+    </div>
+    <div class="report-tab-panel active" id="tab-summary">
+      <div class="results-stats">
+        <div class="stat-card"><div class="stat-number">128</div><div class="stat-text">Netting Sets</div></div>
+        <div class="stat-card"><div class="stat-number">3,412</div><div class="stat-text">Trades</div></div>
+        <div class="stat-card"><div class="stat-number">$212.4M</div><div class="stat-text">RC</div></div>
+        <div class="stat-card"><div class="stat-number">$88.7M</div><div class="stat-text">PFE</div></div>
+        <div class="stat-card"><div class="stat-number">$301.1M</div><div class="stat-text">SACCR Charge</div></div>
+      </div>
+      <div class="dashboard-table-container"><table class="dashboard-table">
+        <thead><tr><th>Netting Set ID</th><th>Agreement Date</th><th># Trades</th><th>RC</th><th>PFE</th><th>EAD</th><th>RWA</th><th>Capital Charge</th><th>Asset Class</th></tr></thead>
+        <tbody>
+          <tr><td>NS-10234</td><td>2021-03-14</td><td>42</td><td>$4.2M</td><td>$1.8M</td><td>$6.0M</td><td>$5.1M</td><td>$408K</td><td>Interest Rate</td></tr>
+          <tr><td>NS-10891</td><td>2019-11-02</td><td>17</td><td>$1.1M</td><td>$0.6M</td><td>$1.7M</td><td>$1.4M</td><td>$112K</td><td>FX</td></tr>
+          <tr><td>NS-11420</td><td>2022-07-21</td><td>96</td><td>$9.8M</td><td>$4.1M</td><td>$13.9M</td><td>$11.6M</td><td>$928K</td><td>Credit</td></tr>
+        </tbody></table></div>
+    </div>
+    <div class="report-tab-panel" id="tab-comparison">
+      <div class="dashboard-table-container"><table class="dashboard-table">
+        <thead><tr><th>Netting Set ID</th><th>Current EAD</th><th>Previous EAD</th><th>Variance</th><th>Variance %</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>NS-10234</td><td>$6.0M</td><td>$6.0M</td><td>$0</td><td>0.0%</td><td><span class="status-badge matched">Matched</span></td></tr>
+          <tr><td>NS-10891</td><td>$1.7M</td><td>$1.6M</td><td>+$0.1M</td><td>3.2%</td><td><span class="status-badge minor-diff">Minor Diff</span></td></tr>
+          <tr><td>NS-11420</td><td>$13.9M</td><td>$11.2M</td><td>+$2.7M</td><td>14.1%</td><td><span class="status-badge review">Review</span></td></tr>
+          <tr><td>NS-12077</td><td>$2.3M</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td><span class="status-badge new">New</span></td></tr>
+        </tbody></table></div>
+    </div>
+    <div class="report-tab-panel" id="tab-exception">
+      <div class="dashboard-table-container"><table class="dashboard-table">
+        <thead><tr><th>Error ID</th><th>Netting Set ID</th><th>Field</th><th>Error Type</th><th>Description</th><th>Severity</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>ERR-001</td><td>NS-11420</td><td>RWA</td><td>Calculation</td><td>RWA variance exceeds 10% threshold</td><td><span class="status-badge high">High</span></td><td><span class="status-badge open">Open</span></td></tr>
+          <tr><td>ERR-002</td><td>NS-10891</td><td>Capital Charge</td><td>Rounding</td><td>Minor rounding mismatch vs prior run</td><td><span class="status-badge low">Low</span></td><td><span class="status-badge open">Open</span></td></tr>
+        </tbody></table></div>
+    </div>
+  </div>`;
+}
+
+function switchTab(btn, panelId) {
+  btn.parentElement.querySelectorAll('.report-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  btn.closest('.results-panel').querySelectorAll('.report-tab-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById(panelId).classList.add('active');
+}
+
+function viewHistory(title) {
+  document.getElementById('modalTitle').textContent = title + ' — History';
+  document.getElementById('modalBody').innerHTML = `<div style="background:#e0f2fe;color:#0369a1;padding:15px;border-radius:8px;">
+    <div style="font-size:1rem;font-weight:600;margin-bottom:8px;">No prior runs found in this mockup.</div>
+  </div>`;
+  document.getElementById('reportModal').classList.add('show');
+}
+function closeModal() { document.getElementById('reportModal').classList.remove('show'); }
+function showLoading() { document.getElementById('loading').classList.add('show'); }
+function hideLoading() { document.getElementById('loading').classList.remove('show'); }
+function showNotification(msg, type) {
+  const n = document.getElementById('notification');
+  n.className = 'notification ' + type;
+  document.getElementById('notification-text').textContent = msg;
+  n.classList.add('show');
+  setTimeout(()=>n.classList.remove('show'), 4000);
+}
+
+document.getElementById('reportModal').addEventListener('click', e => { if (e.target.id === 'reportModal') closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+showRoute('risk-categories');
+</script>
+</body>
+</html>

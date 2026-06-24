@@ -17,6 +17,7 @@
     put '    "#customer": () => buildMasterTableRoute("#customer"),';
     put '    "#offbalance": () => buildMasterTableRoute("#offbalance")';
     put '  },';
+    put '  // Navigates to a route hash and re-renders #main-panel';
     put '  showRoute(route) {';
     put '    console.log("Navigating to:", route);';
     put '    this.currentRoute = route;';
@@ -25,6 +26,7 @@
     put '      window.history.pushState(null, null, route);';
     put '    }';
     put '  },';
+    put '  // Looks up and runs the current route''s render function';
     put '  updateContent() {';
     put '    const mainPanel = document.getElementById("main-panel");';
     put '    if (!mainPanel) return;';
@@ -39,6 +41,7 @@
     put '      mainPanel.innerHTML = "<div style=\"text-align: center; padding: 50px;\"><h2>Page Not Found</h2><p>The requested page could not be found.</p></div>";';
     put '    }';
     put '  },';
+    put '  // Wires hash/popstate listeners and renders the initial route on load';
     put '  initialize() {';
     put '    window.addEventListener("hashchange", () => {';
     put '      this.currentRoute = window.location.hash || "#risk-categories";';

@@ -1,5 +1,6 @@
 
 
+/* Top-level entry point: writes the full SPA page (HTML, CSS, JS) to _webout */
 %macro generate_mt_application;
     /* Initialize configuration */
     %mt_config;
@@ -15,7 +16,6 @@
         %generate_loading;
         %generate_notification;
         %generate_navbar;
-        %generate_sidebar;
 
         /* Generate Main Content */
         put '<main class="main-content">';
