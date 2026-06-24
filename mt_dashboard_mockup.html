@@ -132,14 +132,39 @@ ul { list-style: none; }
   border:none; background:transparent; text-align:right; }
 
 /* ── Dashboard table ──────────────────────────────────────────────────────── */
-.dashboard-table-container { overflow-x:auto; border-radius:12px;
-  box-shadow:0 4px 15px rgba(0,0,0,0.08); }
-.dashboard-table { width:100%; border-collapse:collapse; background:white; font-size:.85rem; }
-.dashboard-table th { background:#f8fafc; padding:15px 12px; text-align:left;
-  font-weight:600; color:#374151; border-bottom:2px solid #e5e7eb; white-space:nowrap; }
-.dashboard-table td { padding:12px; border-bottom:1px solid #f3f4f6;
-  color:#374151; white-space:nowrap; }
-.dashboard-table tr:hover { background:#f9fafb; }
+.dashboard-table-container {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+.dashboard-table {
+  min-width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: .85rem;
+}
+.dashboard-table th {
+  background: #f8fafc;
+  padding: 15px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 2px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  white-space: nowrap;
+  box-shadow: 0 2px 0 #e5e7eb;
+}
+.dashboard-table td {
+  padding: 12px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #374151;
+  white-space: nowrap;
+}
+.dashboard-table tr:hover { background: #f9fafb; }
 .status-badge { padding:4px 8px; border-radius:6px; font-size:.75rem;
   font-weight:500; text-transform:uppercase; letter-spacing:.5px; }
 .status-badge.matched   { background:#dcfce7; color:#166534; }
@@ -629,6 +654,12 @@ function buildSaccrResultsContent(routeKey) {
             <tr><td>NS-10891</td><td>2019-11-02</td><td>17</td><td>$1.1M</td><td>$0.6M</td><td>$1.7M</td><td>$1.4M</td><td>$112K</td><td>FX</td></tr>
             <tr><td>NS-11420</td><td>2022-07-21</td><td>96</td><td>$9.8M</td><td>$4.1M</td><td>$13.9M</td><td>$11.6M</td><td>$928K</td><td>Credit</td></tr>
             <tr><td>NS-12077</td><td>2024-01-08</td><td>23</td><td>$1.4M</td><td>$0.9M</td><td>$2.3M</td><td>$1.9M</td><td>$184K</td><td>Interest Rate</td></tr>
+            <tr><td>NS-12345</td><td>2023-05-17</td><td>61</td><td>$7.3M</td><td>$3.2M</td><td>$10.5M</td><td>$8.9M</td><td>$712K</td><td>Equity</td></tr>
+            <tr><td>NS-12890</td><td>2020-09-30</td><td>34</td><td>$2.9M</td><td>$1.1M</td><td>$4.0M</td><td>$3.4M</td><td>$272K</td><td>Commodity</td></tr>
+            <tr><td>NS-13001</td><td>2022-11-25</td><td>88</td><td>$11.2M</td><td>$4.8M</td><td>$16.0M</td><td>$13.5M</td><td>$1.1M</td><td>Interest Rate</td></tr>
+            <tr><td>NS-13450</td><td>2021-06-09</td><td>12</td><td>$0.8M</td><td>$0.3M</td><td>$1.1M</td><td>$0.9M</td><td>$72K</td><td>FX</td></tr>
+            <tr><td>NS-13789</td><td>2023-02-14</td><td>55</td><td>$5.6M</td><td>$2.4M</td><td>$8.0M</td><td>$6.7M</td><td>$536K</td><td>Credit</td></tr>
+            <tr><td>NS-14022</td><td>2024-03-01</td><td>29</td><td>$3.1M</td><td>$1.4M</td><td>$4.5M</td><td>$3.8M</td><td>$304K</td><td>Interest Rate</td></tr>
           </tbody>
         </table>
       </div>
@@ -693,6 +724,42 @@ function buildSaccrResultsContent(routeKey) {
               <td>$1.9M</td><td>&mdash;</td><td>$184K</td>
               <td><span class="status-badge new">New</span></td>
             </tr>
+            <tr>
+              <td>NS-12345</td><td>$10.5M</td><td>$10.3M</td>
+              <td>+$200K</td><td>1.9%</td>
+              <td>$8.9M</td><td>$8.7M</td><td>$712K</td>
+              <td><span class="status-badge minor-diff">Minor Diff</span></td>
+            </tr>
+            <tr>
+              <td>NS-12890</td><td>$4.0M</td><td>$4.0M</td>
+              <td>$0</td><td>0.0%</td>
+              <td>$3.4M</td><td>$3.4M</td><td>$272K</td>
+              <td><span class="status-badge matched">Matched</span></td>
+            </tr>
+            <tr>
+              <td>NS-13001</td><td>$16.0M</td><td>$9.5M</td>
+              <td>+$6.5M</td><td>68.4%</td>
+              <td>$13.5M</td><td>$8.0M</td><td>$1.1M</td>
+              <td><span class="status-badge review">Review</span></td>
+            </tr>
+            <tr>
+              <td>NS-13450</td><td>$1.1M</td><td>&mdash;</td>
+              <td>+$1.1M</td><td>&mdash;</td>
+              <td>$0.9M</td><td>&mdash;</td><td>$72K</td>
+              <td><span class="status-badge new">New</span></td>
+            </tr>
+            <tr>
+              <td>NS-13789</td><td>$8.0M</td><td>$7.9M</td>
+              <td>+$100K</td><td>1.3%</td>
+              <td>$6.7M</td><td>$6.6M</td><td>$536K</td>
+              <td><span class="status-badge minor-diff">Minor Diff</span></td>
+            </tr>
+            <tr>
+              <td>NS-14022</td><td>$4.5M</td><td>$4.5M</td>
+              <td>$0</td><td>0.0%</td>
+              <td>$3.8M</td><td>$3.8M</td><td>$304K</td>
+              <td><span class="status-badge matched">Matched</span></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -717,6 +784,42 @@ function buildSaccrResultsContent(routeKey) {
               <td>ERR-002</td><td>NS-10891</td><td>Capital Charge</td>
               <td>Warning</td><td>Minor rounding mismatch vs prior run</td>
               <td><span class="status-badge low">Low</span></td>
+              <td><span class="status-badge open">Open</span></td>
+            </tr>
+            <tr>
+              <td>ERR-003</td><td>NS-13001</td><td>EAD</td>
+              <td>Missing</td><td>EAD value is null for current reporting period</td>
+              <td><span class="status-badge high">High</span></td>
+              <td><span class="status-badge open">Open</span></td>
+            </tr>
+            <tr>
+              <td>ERR-004</td><td>NS-12345</td><td>PFE</td>
+              <td>Warning</td><td>PFE increased by more than 5% from prior run</td>
+              <td><span class="status-badge medium">Medium</span></td>
+              <td><span class="status-badge pending">Pending</span></td>
+            </tr>
+            <tr>
+              <td>ERR-005</td><td>NS-13789</td><td>RC</td>
+              <td>Review</td><td>RC value requires manual sign-off</td>
+              <td><span class="status-badge medium">Medium</span></td>
+              <td><span class="status-badge pending">Pending</span></td>
+            </tr>
+            <tr>
+              <td>ERR-006</td><td>NS-14022</td><td>Asset Class</td>
+              <td>Invalid</td><td>Unrecognised asset class code received from source</td>
+              <td><span class="status-badge high">High</span></td>
+              <td><span class="status-badge open">Open</span></td>
+            </tr>
+            <tr>
+              <td>ERR-007</td><td>NS-10234</td><td>Number of Trades</td>
+              <td>Warning</td><td>Trade count differs from prior run by more than 10</td>
+              <td><span class="status-badge low">Low</span></td>
+              <td><span class="status-badge resolved">Resolved</span></td>
+            </tr>
+            <tr>
+              <td>ERR-008</td><td>NS-12890</td><td>RWA</td>
+              <td>Calculation</td><td>RWA recalculation required after rate update</td>
+              <td><span class="status-badge medium">Medium</span></td>
               <td><span class="status-badge open">Open</span></td>
             </tr>
           </tbody>
