@@ -34,6 +34,7 @@
     put '      title: "SAMA Q17 Data Preparation",';
     put '      description: "Internal review and feedback submission for Q17 uploads.",';
     put '      frequency: "Quarterly",';
+    put '      datasetSelector: true,';
     put '      fields: [';
     put '        { id: "RunType", label: "Run Type", type: "select", options: ["Weekly_Run", "Qtr_Run"] },';
     put '        { id: "asof", label: "As of Date", type: "date" },';

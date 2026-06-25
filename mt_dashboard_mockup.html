@@ -80,7 +80,6 @@ ul { list-style: none; }
 .btn-secondary { background:#6b7280; color:white; }
 .btn-secondary:hover { background:#4b5563; }
 .btn-sm { padding:6px 12px; font-size:.8rem; }
-/* back button size override used inside the results panel header */
 .results-back-btn { font-size:.85rem; padding:7px 14px; border-radius:6px; }
 
 /* ── Modal ────────────────────────────────────────────────────────────────── */
@@ -132,39 +131,14 @@ ul { list-style: none; }
   border:none; background:transparent; text-align:right; }
 
 /* ── Dashboard table ──────────────────────────────────────────────────────── */
-.dashboard-table-container {
-  overflow-x: auto;
-  overflow-y: auto;
-  max-height: 300px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-.dashboard-table {
-  min-width: 100%;
-  border-collapse: collapse;
-  background: white;
-  font-size: .85rem;
-}
-.dashboard-table th {
-  background: #f8fafc;
-  padding: 15px 12px;
-  text-align: left;
-  font-weight: 600;
-  color: #374151;
-  border-bottom: 2px solid #e5e7eb;
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  white-space: nowrap;
-  box-shadow: 0 2px 0 #e5e7eb;
-}
-.dashboard-table td {
-  padding: 12px;
-  border-bottom: 1px solid #f3f4f6;
-  color: #374151;
-  white-space: nowrap;
-}
-.dashboard-table tr:hover { background: #f9fafb; }
+.dashboard-table-container { overflow-x:auto; overflow-y:auto; max-height:300px;
+  border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.08); }
+.dashboard-table { min-width:100%; border-collapse:collapse; background:white; font-size:.85rem; }
+.dashboard-table th { background:#f8fafc; padding:15px 12px; text-align:left; font-weight:600;
+  color:#374151; border-bottom:2px solid #e5e7eb; position:sticky; top:0; z-index:2;
+  white-space:nowrap; box-shadow:0 2px 0 #e5e7eb; }
+.dashboard-table td { padding:12px; border-bottom:1px solid #f3f4f6; color:#374151; white-space:nowrap; }
+.dashboard-table tr:hover { background:#f9fafb; }
 .status-badge { padding:4px 8px; border-radius:6px; font-size:.75rem;
   font-weight:500; text-transform:uppercase; letter-spacing:.5px; }
 .status-badge.matched   { background:#dcfce7; color:#166534; }
@@ -203,61 +177,109 @@ ul { list-style: none; }
 .results-empty-state { text-align:center; padding:40px 20px; color:#6b7280; }
 .results-empty-state i { font-size:2rem; margin-bottom:10px; display:block; color:#d1d5db; }
 
-/* ── Total Variance card (Comparison tab) ─────────────────────────────────── */
-.comparison-variance-card {
-  display: flex;
-  align-items: stretch;
-  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-  border-radius: 10px;
-  margin-bottom: 16px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px rgba(59,130,246,0.3);
-}
-.comparison-variance-icon {
-  padding: 14px 16px;
-  font-size: 1.3rem;
-  color: rgba(255,255,255,0.9);
-  display: flex;
-  align-items: center;
-  border-right: 1px solid rgba(255,255,255,0.2);
-}
-.comparison-variance-label {
-  padding: 14px 16px;
-  font-weight: 700;
-  font-size: 0.8rem;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  display: flex;
-  align-items: center;
-  border-right: 1px solid rgba(255,255,255,0.2);
-  white-space: nowrap;
-}
-.comparison-variance-stats {
-  display: flex;
-  flex: 1;
-  background: white;
-}
-.comparison-variance-stat {
-  flex: 1;
-  padding: 10px 14px;
-  text-align: center;
-  border-right: 1px solid #f3f4f6;
-}
-.comparison-variance-stat:last-child { border-right: none; }
-.comparison-variance-stat-value {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #1f2937;
-  line-height: 1.2;
-}
-.comparison-variance-stat-label {
-  font-size: 0.7rem;
-  color: #6b7280;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  margin-top: 2px;
-}
+/* ── Total Variance card ──────────────────────────────────────────────────── */
+.comparison-variance-card { display:flex; align-items:stretch;
+  background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 100%); border-radius:10px;
+  margin-bottom:16px; overflow:hidden; box-shadow:0 3px 10px rgba(59,130,246,0.3); }
+.comparison-variance-icon { padding:14px 16px; font-size:1.3rem; color:rgba(255,255,255,0.9);
+  display:flex; align-items:center; border-right:1px solid rgba(255,255,255,0.2); }
+.comparison-variance-label { padding:14px 16px; font-weight:700; font-size:.8rem; color:white;
+  text-transform:uppercase; letter-spacing:.8px; display:flex; align-items:center;
+  border-right:1px solid rgba(255,255,255,0.2); white-space:nowrap; }
+.comparison-variance-stats { display:flex; flex:1; background:white; }
+.comparison-variance-stat { flex:1; padding:10px 14px; text-align:center; border-right:1px solid #f3f4f6; }
+.comparison-variance-stat:last-child { border-right:none; }
+.comparison-variance-stat-value { font-size:1.05rem; font-weight:700; color:#1f2937; line-height:1.2; }
+.comparison-variance-stat-label { font-size:.7rem; color:#6b7280; text-transform:uppercase;
+  letter-spacing:.4px; margin-top:2px; }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   DATASET SELECTOR STYLES  (mirrors %generate_dataset_selector_styles in css.sas)
+   All custom — no external icon libraries.
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* Selector panel container */
+.ds-panel { background:#ffffff; border:1px solid #e5e7eb; border-radius:10px;
+  padding:16px; margin-bottom:14px; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+.ds-panel-header { font-size:.8rem; font-weight:700; color:#374151;
+  text-transform:uppercase; letter-spacing:.6px; margin-bottom:12px;
+  padding-bottom:8px; border-bottom:1px solid #e5e7eb; }
+
+/* Individual option rows */
+.ds-options { display:flex; flex-direction:column; gap:3px; }
+.ds-option-row { display:flex; align-items:center; gap:10px; padding:8px 10px;
+  border-radius:6px; cursor:pointer; transition:background .15s ease; user-select:none; }
+.ds-option-row:hover { background:#f3f4f6; }
+.ds-option-label { font-size:.9rem; color:#374151; font-weight:500; }
+
+/* Custom checkbox square */
+.ds-cb { width:18px; height:18px; border:2px solid #d1d5db; border-radius:4px;
+  display:flex; align-items:center; justify-content:center; font-size:11px;
+  font-weight:700; color:#ffffff; flex-shrink:0;
+  transition:background .15s ease, border-color .15s ease; }
+.ds-cb.ds-cb-checked { background:#3b82f6; border-color:#3b82f6; }
+
+/* Divider between options and ALL row */
+.ds-all-divider { height:1px; background:#e5e7eb; margin:10px 0; }
+
+/* ALL row — visually distinct */
+.ds-all-row { display:flex; align-items:center; gap:10px; padding:10px 12px;
+  background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px;
+  cursor:pointer; transition:background .15s ease; user-select:none; }
+.ds-all-row:hover { background:#dbeafe; }
+.ds-all-cb { border-color:#93c5fd; }
+.ds-all-cb.ds-cb-checked { background:#1d4ed8; border-color:#1d4ed8; }
+.ds-all-label { font-size:.9rem; font-weight:700; color:#1d4ed8; letter-spacing:.5px; }
+.ds-all-desc { font-size:.78rem; color:#6b7280; margin-left:auto; }
+
+/* Panel footer with Done button */
+.ds-panel-footer { display:flex; justify-content:flex-end; margin-top:12px;
+  padding-top:10px; border-top:1px solid #e5e7eb; }
+.ds-done-btn { padding:7px 20px; background:#3b82f6; color:#ffffff; border:none;
+  border-radius:6px; cursor:pointer; font-size:.85rem; font-weight:600; transition:background .2s ease; }
+.ds-done-btn:hover { background:#2563eb; }
+
+/* Select Datasets toggle button */
+.ds-select-btn { padding:10px 18px; border:2px solid #3b82f6; border-radius:8px;
+  cursor:pointer; font-weight:500; font-size:.9rem; background:#ffffff; color:#3b82f6;
+  transition:all .2s ease; }
+.ds-select-btn:hover { background:#eff6ff; }
+.ds-select-btn.ds-select-btn-active { background:#3b82f6; color:#ffffff; }
+
+/* Run button states */
+.ds-run-btn { padding:10px 20px; border:none; border-radius:8px;
+  font-weight:500; font-size:.9rem; transition:all .2s ease; }
+.ds-run-disabled { background:#e5e7eb; color:#9ca3af; cursor:not-allowed; }
+.ds-run-active { background:#3b82f6; color:#ffffff; cursor:pointer; }
+.ds-run-active:hover { background:#2563eb; }
+
+/* Selection display — tag strip shown after Done */
+.ds-display { display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:12px;
+  padding:8px 10px; background:#f9fafb; border-radius:6px; border:1px solid #e5e7eb; }
+.ds-display-label { font-size:.75rem; font-weight:700; color:#6b7280;
+  text-transform:uppercase; letter-spacing:.5px; white-space:nowrap; }
+.ds-tags { display:flex; flex-wrap:wrap; gap:5px; }
+.ds-tag { padding:3px 10px; background:#dbeafe; color:#1d4ed8;
+  border-radius:12px; font-size:.78rem; font-weight:600; }
+
+/* Availability modal rows */
+.ds-modal-section-title { font-size:.78rem; font-weight:700; color:#374151;
+  text-transform:uppercase; letter-spacing:.6px; margin-bottom:8px; }
+.ds-modal-row-ready { display:flex; align-items:center; gap:10px; padding:8px 12px;
+  background:#d1fae5; border-radius:6px; margin-bottom:5px; }
+.ds-modal-row-ready span { color:#065f46; font-weight:500; font-size:.9rem; }
+.ds-modal-icon-ready { width:20px; height:20px; border-radius:50%; background:#059669;
+  display:flex; align-items:center; justify-content:center; font-size:11px;
+  font-weight:700; color:#ffffff; flex-shrink:0; }
+.ds-modal-row-pending { display:flex; align-items:center; gap:10px; padding:8px 12px;
+  background:#fef3c7; border-radius:6px; margin-bottom:5px; }
+.ds-modal-row-pending span { color:#92400e; font-weight:500; font-size:.9rem; }
+.ds-modal-icon-pending { width:20px; height:20px; border-radius:50%; background:#d97706;
+  display:flex; align-items:center; justify-content:center; font-size:11px;
+  font-weight:700; color:#ffffff; flex-shrink:0; }
+.ds-modal-notice { margin-top:12px; padding:12px 14px; background:#fef3c7;
+  border-left:4px solid #f59e0b; border-radius:4px; font-size:.84rem;
+  color:#92400e; line-height:1.5; }
 
 /* ── Mockup banner ────────────────────────────────────────────────────────── */
 .mockup-banner { background:#1f2937; color:#93c5fd; text-align:center; padding:8px;
@@ -325,75 +347,109 @@ ul { list-style: none; }
 
 <div class="mockup-banner">
   STATIC VISUAL MOCKUP — mirrors the SAS-generated output (no live backend).
-  Navigate: click a tile &rarr; select a date &rarr; Run &rarr; use Back to return to the form.
+  Navigate: click a tile &rarr; (for SAMA Q17 Data Preparation: select datasets then) select a date &rarr; Run &rarr; use Back to return.
+  Demo availability: Liquidity Risk and SACCR-CVA are marked as pending to demonstrate the modal.
 </div>
 
 <!-- ── JavaScript ──────────────────────────────────────────────────────────── -->
 <script>
 
 /* ── Risk module config (mirrors riskModulesConfig.sas) ──────────────────── */
-const riskModules = [
-  { key:'regulatory',  icon:'fas fa-gavel',        title:'SACCR and CVA',      route:'saccr-cva',
+var riskModules = [
+  { key:'regulatory',  icon:'fas fa-gavel',        title:'SACCR and CVA',     route:'saccr-cva',
     desc:'Comprehensive regulatory compliance reports for SACCR and CVA calculations.', stats:[] },
-  { key:'credit',      icon:'fas fa-credit-card',  title:'SAMA Q17',           route:'sama-q17',
+  { key:'credit',      icon:'fas fa-credit-card',  title:'SAMA Q17',          route:'sama-q17',
     desc:'SAMA Q17 uploads and data preparation reporting.', stats:[] },
-  { key:'operational', icon:'fas fa-cogs',          title:'IRRBB',              route:'sama-p3',
+  { key:'operational', icon:'fas fa-cogs',          title:'IRRBB',             route:'sama-p3',
     desc:'Interest rate risk in the banking book (SAMA Pillar III) reporting.', stats:[] },
-  { key:'market',      icon:'fas fa-chart-line',    title:'Assets',             route:'assets',
+  { key:'market',      icon:'fas fa-chart-line',    title:'Assets',            route:'assets',
     desc:'Market risk metrics including value-at-risk and volatility tracking.',
     stats:[{value:'$45M',label:'VaR 95%'},{value:'12.5%',label:'Volatility'}] },
-  { key:'liquidity',   icon:'fas fa-water',         title:'Liabilities',        route:'liability',
+  { key:'liquidity',   icon:'fas fa-water',         title:'Liabilities',       route:'liability',
     desc:'Liquidity coverage and high-quality liquid asset monitoring.',
     stats:[{value:'145%',label:'LCR'},{value:'$850M',label:'HQLA'}] },
-  { key:'icaap',       icon:'fas fa-balance-scale', title:'Off Balance Sheet',  route:'offbalance',
+  { key:'icaap',       icon:'fas fa-balance-scale', title:'Off Balance Sheet', route:'offbalance',
     desc:'Capital adequacy ratio and reconciliation reporting.',
     stats:[{value:'18.5%',label:'CAR'},{value:'$2.8B',label:'Capital'}] },
-  { key:'ilaap',       icon:'fas fa-tint',          title:'Customer',           route:'customer',
+  { key:'ilaap',       icon:'fas fa-tint',          title:'Customer',          route:'customer',
     desc:'Net stable funding ratio and stable funding analysis.',
-    stats:[{value:'125%',label:'NSFR'},{value:'$1.2B',label:'Stable Funding'}] },
+    stats:[{value:'125%',label:'NSFR'},{value:'$1.2B',label:'Stable Funding'}] }
 ];
 
-/* ── Report prompt card config (mirrors masterTableReportsConfig.sas) ──────── */
-const reportRoutes = {
+/* ── Report prompt card config (mirrors masterTableReportsConfig.sas) ──────── *
+ * datasetSelector:true on sama-q17-2 is the only addition versus the SAS source.
+ * ─────────────────────────────────────────────────────────────────────────── */
+var reportRoutes = {
   'saccr-cva': {
     title:'SACCR and CVA',
     cards:[{
-      id:'saccr-cva',
-      title:'SACCR and CVA',
-      desc:'Standardized Approach for Counterparty Credit Risk and Credit Valuation Adjustment quarterly regulatory report for SAMA compliance monitoring and risk assessment.',
+      id:'saccr-cva', title:'SACCR and CVA',
+      desc:'Standardised Approach for Counterparty Credit Risk and Credit Valuation Adjustment quarterly regulatory report.',
       freq:'Weekly / Monthly',
-      fields:[{label:'As of Date', type:'date'}],
-      hasResults: true
+      fields:[{label:'As of Date',type:'date'}],
+      hasResults:true
     }]
   },
   'sama-q17': {
     title:'SAMA Q17',
     cards:[
-      { id:'sama-q17',   title:'SAMA Q17 Uploads',         desc:'Quarterly regulatory upload for SAMA compliance.', freq:'Quarterly',
-        fields:[{label:'As of Date',type:'date'},{label:'Report Pack',type:'select',opts:['Consolidated_Liquidity_Risk','Consolidated_FRTB','Consolidated_IRRBB','Consolidated_Credit_Risk']},{label:'Upload Sheet',type:'file'}] },
-      { id:'sama-q17-2', title:'SAMA Q17 Data Preparation', desc:'Internal review and feedback submission for Q17 uploads.', freq:'Quarterly',
-        fields:[{label:'Run Type',type:'select',opts:['Weekly_Run','Qtr_Run']},{label:'As of Date',type:'date'},{label:'London Date',type:'date'}] }
+      { id:'sama-q17', title:'SAMA Q17 Uploads',
+        desc:'Quarterly regulatory upload for SAMA compliance.',
+        freq:'Quarterly',
+        fields:[
+          {label:'As of Date', type:'date'},
+          {label:'Report Pack', type:'select', opts:['Consolidated_Liquidity_Risk','Consolidated_FRTB','Consolidated_IRRBB','Consolidated_Credit_Risk']},
+          {label:'Upload Sheet', type:'file'}
+        ]
+      },
+      { id:'sama-q17-2', title:'SAMA Q17 Data Preparation',
+        desc:'Internal review and feedback submission for Q17 uploads.',
+        freq:'Quarterly',
+        datasetSelector: true,
+        fields:[
+          {label:'Run Type', type:'select', opts:['Weekly_Run','Qtr_Run']},
+          {label:'As of Date', type:'date'},
+          {label:'London Date', type:'date'}
+        ]
+      }
     ]
   },
-  'sama-p3':   { title:'IRRBB',              cards:[{ id:'sama-p3',   title:'IRRBB',                              desc:'Quarterly regulatory report for SAMA compliance monitoring and risk assessment.', freq:'Daily', fields:[{label:'As of Date',type:'date'}] }] },
-  'assets':    { title:'Assets',             cards:[
+  'sama-p3':  { title:'IRRBB', cards:[{ id:'sama-p3', title:'IRRBB', desc:'Quarterly regulatory report for SAMA compliance monitoring and risk assessment.', freq:'Daily', fields:[{label:'As of Date',type:'date'}] }] },
+  'assets':   { title:'Assets', cards:[
     { id:'asset1', title:'Assets before Adjustment',      desc:'Quarterly regulatory report for SAMA compliance.', freq:'Quarterly', fields:[{label:'As of Date',type:'date'},{label:'IFRS9',type:'date'},{label:'COMM_ADJ_DATE',type:'date'},{label:'ANBI DATE',type:'date'},{label:'LONDON DATE',type:'date'}] },
     { id:'asset2', title:'Assets Reconciliation Process', desc:'Internal review and feedback submission for Q17 uploads.', freq:'Quarterly', fields:[{label:'As of Date',type:'date'},{label:'IFRS9',type:'date'},{label:'COMM_ADJ_DATE',type:'date'},{label:'ANBI DATE',type:'date'},{label:'LONDON DATE',type:'date'}] }
   ]},
-  'liability': { title:'Liabilities',        cards:[{ id:'liability',  title:'Liabilities Reconciliation Process', desc:'Quarterly regulatory report for SAMA compliance.', freq:'Weekly / Monthly', fields:[{label:'As of Date',type:'date'},{label:'London Date',type:'date'}] }] },
-  'customer':  { title:'Customer MT',        cards:[{ id:'customer',   title:'Customer MT',                        desc:'Quarterly regulatory report for SAMA compliance.', freq:'Weekly / Monthly', fields:[{label:'As of Date',type:'date'}] }] },
-  'offbalance':{ title:'Off Balance Sheet',  cards:[{ id:'offbalance', title:'Off Balance Reconciliation Process', desc:'Quarterly regulatory report for SAMA compliance.', freq:'Weekly / Monthly', fields:[{label:'As of Date',type:'date'},{label:'London Date',type:'date'},{label:'Firm & Non Firm Date',type:'date'}] }] },
+  'liability': { title:'Liabilities',       cards:[{ id:'liability',  title:'Liabilities Reconciliation Process', desc:'Quarterly regulatory report for SAMA compliance.', freq:'Weekly / Monthly', fields:[{label:'As of Date',type:'date'},{label:'London Date',type:'date'}] }] },
+  'customer':  { title:'Customer MT',       cards:[{ id:'customer',   title:'Customer MT',                        desc:'Quarterly regulatory report for SAMA compliance.', freq:'Weekly / Monthly', fields:[{label:'As of Date',type:'date'}] }] },
+  'offbalance':{ title:'Off Balance Sheet', cards:[{ id:'offbalance', title:'Off Balance Reconciliation Process', desc:'Quarterly regulatory report for SAMA compliance.', freq:'Weekly / Monthly', fields:[{label:'As of Date',type:'date'},{label:'London Date',type:'date'},{label:'Firm & Non Firm Date',type:'date'}] }] }
 };
 
-/* ── Helpers ──────────────────────────────────────────────────────────────── */
-function fieldHtml(f) {
-  if (f.type === 'select')
-    return `<select style="color:#6b7280;font-size:14px;border:none;background:transparent;">${f.opts.map(o=>`<option>${o}</option>`).join('')}</select>`;
-  if (f.type === 'file')
-    return `<input type="file" style="color:#6b7280;font-size:14px;border:none;background:transparent;max-width:160px;" />`;
-  return `<input type="date" value="2026-06-24" style="color:#6b7280;font-size:14px;border:none;background:transparent;" />`;
-}
+/* ─────────────────────────────────────────────────────────────────────────── *
+ * DATASET SELECTOR CONSTANTS
+ * Mirrors DS_KEYS / DS_LABELS in buildDatasetSelectorJS (buildMasterTableReport.sas).
+ * ─────────────────────────────────────────────────────────────────────────── */
+var DS_KEYS = ['credit-risk','liquidity-risk','saccr-cva','operational-risk','others'];
+var DS_LABELS = {
+  'credit-risk':      'Credit Risk',
+  'liquidity-risk':   'Liquidity Risk',
+  'saccr-cva':        'SACCR-CVA',
+  'operational-risk': 'Operational Risk',
+  'others':           'Others'
+};
 
+/* Simulated backend availability for demo purposes.
+   Liquidity Risk and SACCR-CVA are marked pending to demonstrate the modal. */
+var DEMO_AVAILABILITY = {
+  'credit-risk':      true,
+  'liquidity-risk':   false,
+  'saccr-cva':        false,
+  'operational-risk': true,
+  'others':           true
+};
+
+/* ─────────────────────────────────────────────────────────────────────────── *
+ * HELPERS
+ * ─────────────────────────────────────────────────────────────────────────── */
 function escapeHtml(str) {
   if (str === null || str === undefined) return '';
   return String(str)
@@ -401,458 +457,595 @@ function escapeHtml(str) {
     .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 
-/* ── Routing ──────────────────────────────────────────────────────────────── */
-function showRoute(routeKey) {
-  if (routeKey === 'risk-categories') {
-    renderRiskCategories();
-  } else {
-    renderReportRoute(routeKey);
+function fieldHtml(f, cardId) {
+  if (f.type === 'select')
+    return '<select id="' + cardId + '-' + f.id + '" style="color:#6b7280;font-size:14px;border:none;background:transparent;">'
+      + (f.opts||[]).map(function(o){ return '<option value="'+o+'">'+o+'</option>'; }).join('')
+      + '</select>';
+  if (f.type === 'file')
+    return '<input type="file" id="' + cardId + '-' + f.id + '" style="color:#6b7280;font-size:14px;border:none;background:transparent;max-width:160px;" />';
+  return '<input type="date" id="' + cardId + '-' + f.id + '" value="2026-06-24" style="color:#6b7280;font-size:14px;border:none;background:transparent;" />';
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── *
+ * getpromptHTML
+ * Direct JavaScript equivalent of the SAS getpromptHTML() function emitted by
+ * buildMasterTableReport.sas — produces identical markup.
+ * ─────────────────────────────────────────────────────────────────────────── */
+function getpromptHTML(card, routeKey) {
+  var reportId    = card.id;
+  var title       = card.title;
+  var description = card.desc;
+  var frequency   = card.freq;
+  var fields      = card.fields || [];
+
+  var html = '<div style="background:white;border-radius:12px;padding:25px;'
+    + 'box-shadow:0 4px 15px rgba(0,0,0,0.08);border:2px solid transparent;'
+    + 'transition:all 0.3s ease;cursor:pointer;position:relative;" '
+    + 'onmouseover="this.style.transform=\'translateY(-3px)\';this.style.boxShadow=\'0 8px 25px rgba(0,0,0,0.15)\';this.style.borderColor=\'#3b82f6\';" '
+    + 'onmouseout="this.style.transform=\'translateY(0)\';this.style.boxShadow=\'0 4px 15px rgba(0,0,0,0.08)\';this.style.borderColor=\'transparent\';" '
+    + 'data-report="' + reportId + '">';
+
+  /* header */
+  html += '<div style="display:flex;align-items:flex-start;gap:15px;margin-bottom:20px;">';
+  html += '<div style="width:50px;height:50px;background:linear-gradient(135deg,#3b82f6,#1d4ed8);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;color:white;flex-shrink:0;">';
+  html += '<i class="fas fa-chart-bar"></i>';
+  html += '</div>';
+  html += '<div style="flex:1;">';
+  html += '<h3 style="font-size:1.3rem;font-weight:600;color:#1f2937;margin-bottom:8px;">' + escapeHtml(title) + '</h3>';
+  html += '<p style="color:#6b7280;font-size:.9rem;line-height:1.5;">' + escapeHtml(description) + '</p>';
+  html += '</div></div>';
+
+  /* fields box */
+  html += '<div style="margin-bottom:20px;padding:15px;background:#f9fafb;border-radius:8px;">';
+  html += '<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #e5e7eb;">';
+  html += '<span style="font-weight:500;color:#374151;">Frequency:</span>';
+  html += '<span style="color:#6b7280;">' + escapeHtml(frequency) + '</span>';
+  html += '</div>';
+  fields.forEach(function(f) {
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #e5e7eb;">';
+    html += '<span style="font-weight:500;color:#374151;">' + escapeHtml(f.label) + ':</span>';
+    html += fieldHtml(f, reportId);
+    html += '</div>';
+  });
+  html += '</div>';
+
+  /* ── Dataset selector block (only for datasetSelector cards) ── */
+  if (card.datasetSelector) {
+
+    /* selection display strip — hidden until user clicks Done */
+    html += '<div id="' + reportId + '-ds-display" class="ds-display" style="display:none;">';
+    html += '<span class="ds-display-label">Selected:</span>';
+    html += '<div id="' + reportId + '-ds-tags" class="ds-tags"></div>';
+    html += '</div>';
+
+    /* selector panel — hidden until Select Datasets is clicked */
+    html += '<div id="' + reportId + '-ds-panel" class="ds-panel" style="display:none;">';
+    html += '<div class="ds-panel-header">Select Datasets to Process</div>';
+    html += '<div class="ds-options">';
+
+    /* individual options */
+    html += '<div class="ds-option-row" id="' + reportId + '-row-credit-risk" onclick="toggleDataset(\'' + reportId + '\',\'credit-risk\')">';
+    html += '<div class="ds-cb" id="' + reportId + '-cb-credit-risk"></div>';
+    html += '<span class="ds-option-label">Credit Risk</span></div>';
+
+    html += '<div class="ds-option-row" id="' + reportId + '-row-liquidity-risk" onclick="toggleDataset(\'' + reportId + '\',\'liquidity-risk\')">';
+    html += '<div class="ds-cb" id="' + reportId + '-cb-liquidity-risk"></div>';
+    html += '<span class="ds-option-label">Liquidity Risk</span></div>';
+
+    html += '<div class="ds-option-row" id="' + reportId + '-row-saccr-cva" onclick="toggleDataset(\'' + reportId + '\',\'saccr-cva\')">';
+    html += '<div class="ds-cb" id="' + reportId + '-cb-saccr-cva"></div>';
+    html += '<span class="ds-option-label">SACCR-CVA</span></div>';
+
+    html += '<div class="ds-option-row" id="' + reportId + '-row-operational-risk" onclick="toggleDataset(\'' + reportId + '\',\'operational-risk\')">';
+    html += '<div class="ds-cb" id="' + reportId + '-cb-operational-risk"></div>';
+    html += '<span class="ds-option-label">Operational Risk</span></div>';
+
+    html += '<div class="ds-option-row" id="' + reportId + '-row-others" onclick="toggleDataset(\'' + reportId + '\',\'others\')">';
+    html += '<div class="ds-cb" id="' + reportId + '-cb-others"></div>';
+    html += '<span class="ds-option-label">Others</span></div>';
+
+    html += '</div>'; /* end ds-options */
+
+    /* ALL row */
+    html += '<div class="ds-all-divider"></div>';
+    html += '<div class="ds-all-row" id="' + reportId + '-row-all" onclick="toggleAllDatasets(\'' + reportId + '\')">';
+    html += '<div class="ds-cb ds-all-cb" id="' + reportId + '-cb-all"></div>';
+    html += '<span class="ds-all-label">ALL</span>';
+    html += '<span class="ds-all-desc">Select all datasets</span>';
+    html += '</div>';
+
+    /* footer */
+    html += '<div class="ds-panel-footer">';
+    html += '<button class="ds-done-btn" onclick="closeDatasetPanel(\'' + reportId + '\')">Done</button>';
+    html += '</div>';
+    html += '</div>'; /* end ds-panel */
   }
+
+  /* button row */
+  html += '<div style="display:flex;gap:10px;flex-wrap:wrap;">';
+  if (card.datasetSelector) {
+    html += '<button id="' + reportId + '-select-btn" class="ds-select-btn"'
+      + ' onclick="toggleDatasetPanel(\'' + reportId + '\')">&#9660; Select Datasets</button>';
+    html += '<button id="' + reportId + '-run-btn" class="ds-run-btn ds-run-disabled"'
+      + ' onclick="generateRegulatoryReport(\'' + reportId + '\')" disabled>Run</button>';
+  } else {
+    html += '<button onclick="runReport(\'' + routeKey + '\',\'' + reportId + '\',' + (!!card.hasResults) + ')"'
+      + ' style="padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-weight:500;font-size:.9rem;background:#3b82f6;color:white;transition:all .3s;"'
+      + ' onmouseover="this.style.background=\'#2563eb\'"'
+      + ' onmouseout="this.style.background=\'#3b82f6\'">Run</button>';
+  }
+  html += '<button onclick="viewHistory(\'' + escapeHtml(title) + '\')"'
+    + ' style="padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-weight:500;font-size:.9rem;background:#6b7280;color:white;transition:all .3s;"'
+    + ' onmouseover="this.style.background=\'#4b5563\'"'
+    + ' onmouseout="this.style.background=\'#6b7280\'">View History</button>';
+  html += '</div>';
+
+  html += '</div>';
+  return html;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── *
+ * ROUTING
+ * ─────────────────────────────────────────────────────────────────────────── */
+function showRoute(routeKey) {
+  if (routeKey === 'risk-categories') renderRiskCategories();
+  else renderReportRoute(routeKey);
   window.scrollTo(0, 0);
 }
 
-/* ── Risk categories landing page ─────────────────────────────────────────── */
 function renderRiskCategories() {
   document.getElementById('breadcrumb-current').textContent = 'Risk Management';
-  let html = `<h2 style="margin-bottom:20px;color:#1f2937;font-size:1.5rem;">Master Table Preparation</h2>
-    <div class="risk-modules">`;
-  riskModules.forEach(m => {
-    html += `<div class="risk-module" onclick="showRoute('${m.route}')">
-      <div class="module-header">
-        <div class="module-icon ${m.key}"><i class="${m.icon}"></i></div>
-        <h3 class="module-title">${m.title}</h3>
-      </div>
-      <p class="module-description">${m.desc}</p>
-      <div class="module-stats">
-        ${m.stats.map(s=>`<div class="stat-item"><div class="stat-value">${s.value}</div><div class="stat-label">${s.label}</div></div>`).join('')}
-      </div>
-    </div>`;
+  var html = '<h2 style="margin-bottom:20px;color:#1f2937;font-size:1.5rem;">Master Table Preparation</h2>'
+    + '<div class="risk-modules">';
+  riskModules.forEach(function(m) {
+    html += '<div class="risk-module" onclick="showRoute(\'' + m.route + '\')">'
+      + '<div class="module-header">'
+      + '<div class="module-icon ' + m.key + '"><i class="' + m.icon + '"></i></div>'
+      + '<h3 class="module-title">' + escapeHtml(m.title) + '</h3>'
+      + '</div>'
+      + '<p class="module-description">' + escapeHtml(m.desc) + '</p>'
+      + '<div class="module-stats">'
+      + m.stats.map(function(s){ return '<div class="stat-item"><div class="stat-value">'+s.value+'</div><div class="stat-label">'+s.label+'</div></div>'; }).join('')
+      + '</div></div>';
   });
-  html += `</div>`;
+  html += '</div>';
   document.getElementById('main-panel').innerHTML = html;
 }
 
-/* ── Report route page ─────────────────────────────────────────────────────── *
- * Mirrors buildMasterTableRoute() in buildMasterTableReport.sas.
- * The prompt-cards grid gets id="${routeKey}-prompt-cards".
- * The results panel gets id="${routeKey}-results".
- * When Run is clicked, the grid is hidden and the results panel is shown.
- * The Back button inside the results panel reverses that.
- * ─────────────────────────────────────────────────────────────────────────── */
+/* buildMasterTableRoute equivalent — mirrors the SAS function exactly */
 function renderReportRoute(routeKey) {
-  const route = reportRoutes[routeKey];
+  var route = reportRoutes[routeKey];
   document.getElementById('breadcrumb-current').textContent = route.title;
 
-  const promptCardsId = routeKey + '-prompt-cards';
-  const resultsId     = routeKey + '-results';
+  var promptCardsId = routeKey + '-prompt-cards';
+  var resultsId     = routeKey + '-results';
 
-  /* prompt cards grid */
-  let cardsHtml = '';
-  (route.cards || []).forEach(c => {
-    cardsHtml += `
-      <div style="background:white;border-radius:12px;padding:25px;
-        box-shadow:0 4px 15px rgba(0,0,0,0.08);border:2px solid transparent;
-        transition:all .3s;" class="report-card" data-report="${c.id}">
-        <div class="report-card-head">
-          <div class="report-card-icon"><i class="fas fa-chart-bar"></i></div>
-          <div style="flex:1;">
-            <h3 style="font-size:1.3rem;font-weight:600;color:#1f2937;margin-bottom:8px;">${escapeHtml(c.title)}</h3>
-            <p style="color:#6b7280;font-size:.9rem;line-height:1.5;">${escapeHtml(c.desc)}</p>
-          </div>
-        </div>
-        <div class="report-field-box">
-          <div class="report-field-row">
-            <span style="font-weight:500;color:#374151;">Frequency:</span>
-            <span style="color:#6b7280;">${escapeHtml(c.freq)}</span>
-          </div>
-          ${c.fields.map(f=>`
-            <div class="report-field-row">
-              <span style="font-weight:500;color:#374151;">${escapeHtml(f.label)}:</span>
-              ${fieldHtml(f)}
-            </div>`).join('')}
-        </div>
-        <div style="display:flex;gap:10px;">
-          <button onclick="runReport('${routeKey}','${c.id}',${!!c.hasResults})"
-            style="padding:10px 20px;border:none;border-radius:8px;cursor:pointer;
-              font-weight:500;font-size:.9rem;background:#3b82f6;color:white;transition:all .3s;"
-            onmouseover="this.style.background='#2563eb'"
-            onmouseout="this.style.background='#3b82f6'">Run</button>
-          <button onclick="viewHistory('${escapeHtml(c.title)}')"
-            style="padding:10px 20px;border:none;border-radius:8px;cursor:pointer;
-              font-weight:500;font-size:.9rem;background:#6b7280;color:white;transition:all .3s;"
-            onmouseover="this.style.background='#4b5563'"
-            onmouseout="this.style.background='#6b7280'">View History</button>
-        </div>
-      </div>`;
+  var cardsHtml = '';
+  (route.cards || []).forEach(function(c) {
+    cardsHtml += getpromptHTML(c, routeKey);
   });
 
-  const html = `
-    <div style="max-width:1200px;margin:0 auto;padding:20px;">
-      <div id="${promptCardsId}" style="display:block;">
-        <div style="margin-bottom:20px;">
-          <button onclick="showRoute('risk-categories')"
-            style="padding:10px 20px;border:none;border-radius:8px;cursor:pointer;
-              font-weight:500;font-size:.9rem;background:#6b7280;color:white;transition:all .3s;"
-            onmouseover="this.style.background='#4b5563'"
-            onmouseout="this.style.background='#6b7280'">
-            <i class="fas fa-arrow-left"></i> Back
-          </button>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
-          gap:25px;margin-bottom:30px;">
-          ${cardsHtml}
-        </div>
-      </div>
-      <div id="${resultsId}" class="results-panel" style="display:none;"></div>
-    </div>`;
+  var html = '<div style="max-width:1200px;margin:0 auto;padding:20px;">'
+    + '<div id="' + promptCardsId + '" style="display:block;">'
+    + '<div style="margin-bottom:20px;">'
+    + '<button onclick="showRoute(\'risk-categories\')"'
+    + ' style="padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-weight:500;font-size:.9rem;background:#6b7280;color:white;transition:all .3s;"'
+    + ' onmouseover="this.style.background=\'#4b5563\'"'
+    + ' onmouseout="this.style.background=\'#6b7280\'"><i class="fas fa-arrow-left"></i> Back</button>'
+    + '</div>'
+    + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:25px;margin-bottom:30px;">'
+    + cardsHtml
+    + '</div></div>'
+    + '<div id="' + resultsId + '" class="results-panel" style="display:none;"></div>'
+    + '</div>';
 
   document.getElementById('main-panel').innerHTML = html;
+
+  /* pre-fill today's date into all date inputs */
+  var today = new Date().toISOString().split('T')[0];
+  var dateInputs = document.querySelectorAll('input[type="date"]');
+  dateInputs.forEach(function(inp) { if (!inp.value) inp.value = today; });
 }
 
-/* ── Run button handler ───────────────────────────────────────────────────── *
- * For saccr-cva (hasResults=true): hides the prompt cards, shows the results.
- * For all other reports: shows a generic "completed" notice below the cards.
+/* ─────────────────────────────────────────────────────────────────────────── *
+ * DATASET SELECTOR INTERACTIONS
+ * Mirrors buildDatasetSelectorJS in buildMasterTableReport.sas exactly.
+ * ─────────────────────────────────────────────────────────────────────────── */
+function toggleDatasetPanel(reportId) {
+  var panel = document.getElementById(reportId + '-ds-panel');
+  if (!panel) return;
+  var isOpen = panel.style.display !== 'none';
+  panel.style.display = isOpen ? 'none' : 'block';
+  var btn = document.getElementById(reportId + '-select-btn');
+  if (btn) {
+    if (!isOpen) {
+      btn.classList.add('ds-select-btn-active');
+      btn.innerHTML = '&#9650; Select Datasets';
+    } else {
+      btn.classList.remove('ds-select-btn-active');
+      btn.innerHTML = '&#9660; Select Datasets';
+    }
+  }
+}
+
+function closeDatasetPanel(reportId) {
+  var panel = document.getElementById(reportId + '-ds-panel');
+  if (panel) panel.style.display = 'none';
+  var btn = document.getElementById(reportId + '-select-btn');
+  if (btn) {
+    btn.classList.remove('ds-select-btn-active');
+    btn.innerHTML = '&#9660; Select Datasets';
+  }
+  updateDatasetDisplay(reportId);
+}
+
+function toggleDataset(reportId, key) {
+  var cb = document.getElementById(reportId + '-cb-' + key);
+  if (!cb) return;
+  var isChecked = cb.classList.contains('ds-cb-checked');
+  if (!isChecked) {
+    var checkedCount = 0;
+    DS_KEYS.forEach(function(k) {
+      var c = document.getElementById(reportId + '-cb-' + k);
+      if (c && c.classList.contains('ds-cb-checked')) checkedCount++;
+    });
+    if (checkedCount >= 4) return;
+    cb.classList.add('ds-cb-checked');
+    cb.innerHTML = '&#10003;';
+  } else {
+    cb.classList.remove('ds-cb-checked');
+    cb.innerHTML = '';
+  }
+  syncAllCheckbox(reportId);
+  updateDatasetRunButton(reportId);
+}
+
+function toggleAllDatasets(reportId) {
+  var allCb = document.getElementById(reportId + '-cb-all');
+  if (!allCb) return;
+  var isAllChecked = allCb.classList.contains('ds-cb-checked');
+  if (isAllChecked) {
+    allCb.classList.remove('ds-cb-checked');
+    allCb.innerHTML = '';
+    DS_KEYS.forEach(function(k) {
+      var c = document.getElementById(reportId + '-cb-' + k);
+      if (c) { c.classList.remove('ds-cb-checked'); c.innerHTML = ''; }
+    });
+  } else {
+    allCb.classList.add('ds-cb-checked');
+    allCb.innerHTML = '&#10003;';
+    DS_KEYS.forEach(function(k) {
+      var c = document.getElementById(reportId + '-cb-' + k);
+      if (c) { c.classList.add('ds-cb-checked'); c.innerHTML = '&#10003;'; }
+    });
+  }
+  updateDatasetRunButton(reportId);
+}
+
+function syncAllCheckbox(reportId) {
+  var allChecked = true;
+  DS_KEYS.forEach(function(k) {
+    var c = document.getElementById(reportId + '-cb-' + k);
+    if (!c || !c.classList.contains('ds-cb-checked')) allChecked = false;
+  });
+  var allCb = document.getElementById(reportId + '-cb-all');
+  if (allCb) {
+    if (allChecked) { allCb.classList.add('ds-cb-checked'); allCb.innerHTML = '&#10003;'; }
+    else { allCb.classList.remove('ds-cb-checked'); allCb.innerHTML = ''; }
+  }
+}
+
+function updateDatasetRunButton(reportId) {
+  var hasSelection = false;
+  DS_KEYS.forEach(function(k) {
+    var c = document.getElementById(reportId + '-cb-' + k);
+    if (c && c.classList.contains('ds-cb-checked')) hasSelection = true;
+  });
+  var runBtn = document.getElementById(reportId + '-run-btn');
+  if (!runBtn) return;
+  if (hasSelection) {
+    runBtn.disabled = false;
+    runBtn.classList.remove('ds-run-disabled');
+    runBtn.classList.add('ds-run-active');
+  } else {
+    runBtn.disabled = true;
+    runBtn.classList.add('ds-run-disabled');
+    runBtn.classList.remove('ds-run-active');
+  }
+}
+
+function updateDatasetDisplay(reportId) {
+  var selected = getSelectedDatasets(reportId);
+  var display  = document.getElementById(reportId + '-ds-display');
+  var tagsDiv  = document.getElementById(reportId + '-ds-tags');
+  if (!display || !tagsDiv) return;
+  if (selected.length === 0) { display.style.display = 'none'; tagsDiv.innerHTML = ''; return; }
+  var tagsHtml = '';
+  selected.forEach(function(k) {
+    tagsHtml += '<span class="ds-tag">' + (DS_LABELS[k] || k) + '</span>';
+  });
+  tagsDiv.innerHTML = tagsHtml;
+  display.style.display = 'flex';
+}
+
+function getSelectedDatasets(reportId) {
+  var selected = [];
+  DS_KEYS.forEach(function(k) {
+    var c = document.getElementById(reportId + '-cb-' + k);
+    if (c && c.classList.contains('ds-cb-checked')) selected.push(k);
+  });
+  return selected;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── *
+ * generateRegulatoryReport — sama-q17-2 gated path
+ * Mirrors the sama-q17-2 branch in masterTableReportGeneration.sas.
+ * Uses DEMO_AVAILABILITY instead of a real fetch for the mockup.
+ * ─────────────────────────────────────────────────────────────────────────── */
+function generateRegulatoryReport(reportId) {
+  var selected = getSelectedDatasets(reportId);
+
+  if (selected.length === 0) {
+    showModalMessage({ title: 'No Dataset Selected',
+      message: 'Please select at least one dataset before running the process.',
+      type: 'warning' });
+    return;
+  }
+
+  showLoading();
+
+  /* Simulate the availability check fetch with a short delay */
+  setTimeout(function() {
+    hideLoading();
+
+    var readyDatasets   = [];
+    var pendingDatasets = [];
+    selected.forEach(function(k) {
+      if (DEMO_AVAILABILITY[k] === true) readyDatasets.push(k);
+      else pendingDatasets.push(k);
+    });
+
+    if (pendingDatasets.length > 0) {
+      showDatasetStatusModal(readyDatasets, pendingDatasets);
+      return;
+    }
+
+    /* All datasets available — simulate successful run */
+    showNotification('Master Table Prepared Successfully', 'success');
+  }, 800);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── *
+ * showDatasetStatusModal
+ * Mirrors showDatasetStatusModal() in modals.sas.
+ * ─────────────────────────────────────────────────────────────────────────── */
+function showDatasetStatusModal(available, pending) {
+  var modal      = document.getElementById('reportModal');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalBody  = document.getElementById('modalBody');
+  if (!modal || !modalTitle || !modalBody) return;
+
+  modalTitle.textContent = 'Dataset Availability Summary';
+  var html = '';
+
+  if (available.length > 0) {
+    html += '<div style="margin-bottom:16px;">';
+    html += '<div class="ds-modal-section-title">Ready for Processing</div>';
+    available.forEach(function(k) {
+      html += '<div class="ds-modal-row-ready">';
+      html += '<div class="ds-modal-icon-ready">&#10003;</div>';
+      html += '<span>' + escapeHtml(DS_LABELS[k] || k) + '</span>';
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+
+  if (pending.length > 0) {
+    html += '<div>';
+    html += '<div class="ds-modal-section-title">Pending Data Availability</div>';
+    pending.forEach(function(k) {
+      html += '<div class="ds-modal-row-pending">';
+      html += '<div class="ds-modal-icon-pending">!</div>';
+      html += '<span>' + escapeHtml(DS_LABELS[k] || k) + '</span>';
+      html += '</div>';
+    });
+    html += '<div class="ds-modal-notice">';
+    html += 'The process cannot be executed until all selected datasets are available. ';
+    html += 'Please verify the data preparation status and try again once the datasets are ready.';
+    html += '</div>';
+    html += '</div>';
+  }
+
+  modalBody.innerHTML = html;
+  modal.classList.add('show');
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── *
+ * showModalMessage — mirrors modals.sas showModalMessage()
+ * ─────────────────────────────────────────────────────────────────────────── */
+function showModalMessage(payload) {
+  var modal      = document.getElementById('reportModal');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalBody  = document.getElementById('modalBody');
+  if (!modal || !modalTitle || !modalBody) return;
+
+  var title   = payload && payload.title   ? payload.title   : 'Notification';
+  var message = payload && payload.message ? payload.message : 'No message provided.';
+  var type    = payload && payload.type    ? payload.type    : 'info';
+  var themes  = {
+    error:   { bg:'#fee2e2', text:'#b91c1c' },
+    warning: { bg:'#fef3c7', text:'#92400e' },
+    success: { bg:'#d1fae5', text:'#065f46' },
+    info:    { bg:'#e0f2fe', text:'#0369a1' }
+  };
+  var theme = themes[type] || { bg:'#f9fafb', text:'#1f2937' };
+
+  modalTitle.textContent = title;
+  modalBody.innerHTML = '<div style="background:' + theme.bg + ';color:' + theme.text
+    + ';padding:15px;border-radius:8px;">'
+    + '<div style="font-size:1rem;font-weight:600;">' + escapeHtml(message) + '</div>'
+    + '</div>';
+  modal.classList.add('show');
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── *
+ * STANDARD RUN HANDLER (non-datasetSelector cards)
  * ─────────────────────────────────────────────────────────────────────────── */
 function runReport(routeKey, reportId, hasResults) {
   showLoading();
-  setTimeout(() => {
+  setTimeout(function() {
     hideLoading();
     showNotification('Master Table Prepared Successfully', 'success');
 
     if (hasResults) {
-      /* Inject results into the results panel */
-      const resultsEl  = document.getElementById(routeKey + '-results');
-      const promptEl   = document.getElementById(routeKey + '-prompt-cards');
+      var resultsEl = document.getElementById(routeKey + '-results');
+      var promptEl  = document.getElementById(routeKey + '-prompt-cards');
       if (resultsEl) {
         resultsEl.innerHTML = buildSaccrResultsContent(routeKey);
         resultsEl.style.display = 'block';
-        resultsEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        resultsEl.scrollIntoView({ behavior:'smooth', block:'nearest' });
       }
-      /* Hide the prompt cards — user sees only the results + Back button */
       if (promptEl) promptEl.style.display = 'none';
     } else {
-      /* Non-SACCR report: show a simple success notice (tiles stay visible) */
-      const resultsEl = document.getElementById(routeKey + '-results');
-      if (resultsEl) {
-        resultsEl.innerHTML = `
-          <div class="results-panel-header">
-            <div class="results-panel-title">Results</div>
-          </div>
-          <div class="results-empty-state">
-            <i class="fas fa-check-circle" style="color:#10b981;"></i>
-            Report <strong>${escapeHtml(reportId)}</strong> completed. Output file is ready.
-          </div>`;
-        resultsEl.style.display = 'block';
+      var resultsEl2 = document.getElementById(routeKey + '-results');
+      if (resultsEl2) {
+        resultsEl2.innerHTML = '<div class="results-panel-header"><div class="results-panel-title">Results</div></div>'
+          + '<div class="results-empty-state"><i class="fas fa-check-circle" style="color:#10b981;"></i>'
+          + 'Report <strong>' + escapeHtml(reportId) + '</strong> completed. Output file is ready.</div>';
+        resultsEl2.style.display = 'block';
       }
     }
   }, 900);
 }
 
-/* ── Back button handler ──────────────────────────────────────────────────── *
- * Mirrors MTSaccrResults.goBack() in saccrResultsView.sas.
- * Hides the results panel and restores the prompt-cards grid.
+/* ─────────────────────────────────────────────────────────────────────────── *
+ * BACK BUTTON / TAB SWITCHER
  * ─────────────────────────────────────────────────────────────────────────── */
 function goBack(routeKey) {
-  const resultsEl = document.getElementById(routeKey + '-results');
+  var resultsEl = document.getElementById(routeKey + '-results');
   if (resultsEl) resultsEl.style.display = 'none';
-  const promptEl  = document.getElementById(routeKey + '-prompt-cards');
+  var promptEl  = document.getElementById(routeKey + '-prompt-cards');
   if (promptEl)  promptEl.style.display  = 'block';
 }
 
-/* ── Tab switcher ─────────────────────────────────────────────────────────── */
 function switchTab(btn, panelId) {
-  const tabsContainer = btn.parentElement;
-  tabsContainer.querySelectorAll('.report-tab').forEach(t => t.classList.remove('active'));
+  var tabsContainer = btn.parentElement;
+  tabsContainer.querySelectorAll('.report-tab').forEach(function(t){ t.classList.remove('active'); });
   btn.classList.add('active');
-  const resultsPanel = btn.closest('.results-panel');
+  var resultsPanel = btn.closest('.results-panel');
   if (resultsPanel) {
-    resultsPanel.querySelectorAll('.report-tab-panel').forEach(p => p.classList.remove('active'));
-    const target = resultsPanel.querySelector('#' + panelId);
+    resultsPanel.querySelectorAll('.report-tab-panel').forEach(function(p){ p.classList.remove('active'); });
+    var target = resultsPanel.querySelector('#' + panelId);
     if (target) target.classList.add('active');
   }
 }
 
-/* ── SACCR / CVA results content ─────────────────────────────────────────── *
- * Mirrors MTSaccrResults.renderTabs() + buildTab1/2/3 in saccrResultsView.sas.
- * Returns HTML injected into the already-existing .results-panel div.
- *
- * Key changes reflected here:
- *   1. Back button in the panel header (results-back-btn)
- *   2. Total Variance card at the top of the Comparison Report tab
+/* ─────────────────────────────────────────────────────────────────────────── *
+ * SACCR / CVA RESULTS CONTENT
+ * Mirrors MTSaccrResults in saccrResultsView.sas.
  * ─────────────────────────────────────────────────────────────────────────── */
 function buildSaccrResultsContent(routeKey) {
-  return `
-    <!-- Panel header with Back button (mirrors renderTabs) -->
-    <div class="results-panel-header">
-      <div class="results-panel-title">Results</div>
-      <button class="btn btn-secondary results-back-btn"
-        onclick="goBack('${routeKey}')">
-        <i class="fas fa-arrow-left"></i> Back
-      </button>
-    </div>
+  return '<div class="results-panel-header">'
+    + '<div class="results-panel-title">Results</div>'
+    + '<button class="btn btn-secondary results-back-btn" onclick="goBack(\'' + routeKey + '\')">'
+    + '<i class="fas fa-arrow-left"></i> Back</button></div>'
 
-    <!-- Tab nav -->
-    <div class="report-tabs">
-      <button class="report-tab active"
-        onclick="switchTab(this,'tab-saccr-summary')">SACCR Summary</button>
-      <button class="report-tab"
-        onclick="switchTab(this,'tab-saccr-comparison')">Comparison Report</button>
-      <button class="report-tab"
-        onclick="switchTab(this,'tab-saccr-exception')">Exception Report</button>
-    </div>
+    + '<div class="report-tabs">'
+    + '<button class="report-tab active" onclick="switchTab(this,\'tab-saccr-summary\')">SACCR Summary</button>'
+    + '<button class="report-tab" onclick="switchTab(this,\'tab-saccr-comparison\')">Comparison Report</button>'
+    + '<button class="report-tab" onclick="switchTab(this,\'tab-saccr-exception\')">Exception Report</button>'
+    + '</div>'
 
-    <!-- ── Tab 1: SACCR Summary ─────────────────────────────────────────── -->
-    <div class="report-tab-panel active" id="tab-saccr-summary">
-      <!-- SACCR KPI cards (mirrors buildTab1 → renderStatCards) -->
-      <div class="results-stats">
-        <div class="stat-card">
-          <div class="stat-number">128</div>
-          <div class="stat-text">Netting Sets</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">3,412</div>
-          <div class="stat-text">Trades</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">$212.4M</div>
-          <div class="stat-text">RC</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">$88.7M</div>
-          <div class="stat-text">PFE</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">$301.1M</div>
-          <div class="stat-text">SACCR Charge</div>
-        </div>
-      </div>
-      <!-- CVA KPI cards -->
-      <div class="results-stats" style="margin-top:0;">
-        <div class="stat-card" style="border-left-color:#10b981;">
-          <div class="stat-number">$18.3M</div>
-          <div class="stat-text">CVA R Amount</div>
-        </div>
-        <div class="stat-card" style="border-left-color:#10b981;">
-          <div class="stat-number">$6.7M</div>
-          <div class="stat-text">CVA Capital Charge</div>
-        </div>
-        <div class="stat-card" style="border-left-color:#10b981;">
-          <div class="stat-number">$83.5M</div>
-          <div class="stat-text">CVA RWA</div>
-        </div>
-      </div>
-      <!-- Netting set table -->
-      <div class="dashboard-table-container">
-        <table class="dashboard-table">
-          <thead><tr>
-            <th>Netting Set ID</th><th>Agreement Date</th><th># Trades</th>
-            <th>RC</th><th>PFE</th><th>EAD</th><th>RWA</th>
-            <th>Capital Charge</th><th>Asset Class</th>
-          </tr></thead>
-          <tbody>
-            <tr><td>NS-10234</td><td>2021-03-14</td><td>42</td><td>$4.2M</td><td>$1.8M</td><td>$6.0M</td><td>$5.1M</td><td>$408K</td><td>Interest Rate</td></tr>
-            <tr><td>NS-10891</td><td>2019-11-02</td><td>17</td><td>$1.1M</td><td>$0.6M</td><td>$1.7M</td><td>$1.4M</td><td>$112K</td><td>FX</td></tr>
-            <tr><td>NS-11420</td><td>2022-07-21</td><td>96</td><td>$9.8M</td><td>$4.1M</td><td>$13.9M</td><td>$11.6M</td><td>$928K</td><td>Credit</td></tr>
-            <tr><td>NS-12077</td><td>2024-01-08</td><td>23</td><td>$1.4M</td><td>$0.9M</td><td>$2.3M</td><td>$1.9M</td><td>$184K</td><td>Interest Rate</td></tr>
-            <tr><td>NS-12345</td><td>2023-05-17</td><td>61</td><td>$7.3M</td><td>$3.2M</td><td>$10.5M</td><td>$8.9M</td><td>$712K</td><td>Equity</td></tr>
-            <tr><td>NS-12890</td><td>2020-09-30</td><td>34</td><td>$2.9M</td><td>$1.1M</td><td>$4.0M</td><td>$3.4M</td><td>$272K</td><td>Commodity</td></tr>
-            <tr><td>NS-13001</td><td>2022-11-25</td><td>88</td><td>$11.2M</td><td>$4.8M</td><td>$16.0M</td><td>$13.5M</td><td>$1.1M</td><td>Interest Rate</td></tr>
-            <tr><td>NS-13450</td><td>2021-06-09</td><td>12</td><td>$0.8M</td><td>$0.3M</td><td>$1.1M</td><td>$0.9M</td><td>$72K</td><td>FX</td></tr>
-            <tr><td>NS-13789</td><td>2023-02-14</td><td>55</td><td>$5.6M</td><td>$2.4M</td><td>$8.0M</td><td>$6.7M</td><td>$536K</td><td>Credit</td></tr>
-            <tr><td>NS-14022</td><td>2024-03-01</td><td>29</td><td>$3.1M</td><td>$1.4M</td><td>$4.5M</td><td>$3.8M</td><td>$304K</td><td>Interest Rate</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    /* Tab 1 */
+    + '<div class="report-tab-panel active" id="tab-saccr-summary">'
+    + '<div class="results-stats">'
+    + '<div class="stat-card"><div class="stat-number">128</div><div class="stat-text">Netting Sets</div></div>'
+    + '<div class="stat-card"><div class="stat-number">3,412</div><div class="stat-text">Trades</div></div>'
+    + '<div class="stat-card"><div class="stat-number">$212.4M</div><div class="stat-text">RC</div></div>'
+    + '<div class="stat-card"><div class="stat-number">$88.7M</div><div class="stat-text">PFE</div></div>'
+    + '<div class="stat-card"><div class="stat-number">$301.1M</div><div class="stat-text">SACCR Charge</div></div>'
+    + '</div>'
+    + '<div class="results-stats" style="margin-top:0;">'
+    + '<div class="stat-card" style="border-left-color:#10b981;"><div class="stat-number">$18.3M</div><div class="stat-text">CVA R Amount</div></div>'
+    + '<div class="stat-card" style="border-left-color:#10b981;"><div class="stat-number">$6.7M</div><div class="stat-text">CVA Capital Charge</div></div>'
+    + '<div class="stat-card" style="border-left-color:#10b981;"><div class="stat-number">$83.5M</div><div class="stat-text">CVA RWA</div></div>'
+    + '</div>'
+    + '<div class="dashboard-table-container"><table class="dashboard-table"><thead><tr>'
+    + '<th>Netting Set ID</th><th>Agreement Date</th><th># Trades</th><th>RC</th><th>PFE</th><th>EAD</th><th>RWA</th><th>Capital Charge</th><th>Asset Class</th>'
+    + '</tr></thead><tbody>'
+    + '<tr><td>NS-10234</td><td>2021-03-14</td><td>42</td><td>$4.2M</td><td>$1.8M</td><td>$6.0M</td><td>$5.1M</td><td>$408K</td><td>Interest Rate</td></tr>'
+    + '<tr><td>NS-10891</td><td>2019-11-02</td><td>17</td><td>$1.1M</td><td>$0.6M</td><td>$1.7M</td><td>$1.4M</td><td>$112K</td><td>FX</td></tr>'
+    + '<tr><td>NS-11420</td><td>2022-07-21</td><td>96</td><td>$9.8M</td><td>$4.1M</td><td>$13.9M</td><td>$11.6M</td><td>$928K</td><td>Credit</td></tr>'
+    + '<tr><td>NS-12077</td><td>2024-01-08</td><td>23</td><td>$1.4M</td><td>$0.9M</td><td>$2.3M</td><td>$1.9M</td><td>$184K</td><td>Interest Rate</td></tr>'
+    + '<tr><td>NS-12345</td><td>2023-05-17</td><td>61</td><td>$7.3M</td><td>$3.2M</td><td>$10.5M</td><td>$8.9M</td><td>$712K</td><td>Equity</td></tr>'
+    + '<tr><td>NS-12890</td><td>2020-09-30</td><td>34</td><td>$2.9M</td><td>$1.1M</td><td>$4.0M</td><td>$3.4M</td><td>$272K</td><td>Commodity</td></tr>'
+    + '<tr><td>NS-13001</td><td>2022-11-25</td><td>88</td><td>$11.2M</td><td>$4.8M</td><td>$16.0M</td><td>$13.5M</td><td>$1.1M</td><td>Interest Rate</td></tr>'
+    + '<tr><td>NS-13450</td><td>2021-06-09</td><td>12</td><td>$0.8M</td><td>$0.3M</td><td>$1.1M</td><td>$0.9M</td><td>$72K</td><td>FX</td></tr>'
+    + '<tr><td>NS-13789</td><td>2023-02-14</td><td>55</td><td>$5.6M</td><td>$2.4M</td><td>$8.0M</td><td>$6.7M</td><td>$536K</td><td>Credit</td></tr>'
+    + '<tr><td>NS-14022</td><td>2024-03-01</td><td>29</td><td>$3.1M</td><td>$1.4M</td><td>$4.5M</td><td>$3.8M</td><td>$304K</td><td>Interest Rate</td></tr>'
+    + '</tbody></table></div></div>'
 
-    <!-- ── Tab 2: Comparison Report ──────────────────────────────────────── -->
-    <div class="report-tab-panel" id="tab-saccr-comparison">
+    /* Tab 2 */
+    + '<div class="report-tab-panel" id="tab-saccr-comparison">'
+    + '<div class="comparison-variance-card">'
+    + '<div class="comparison-variance-icon"><i class="fas fa-balance-scale"></i></div>'
+    + '<div class="comparison-variance-label">Total Variance</div>'
+    + '<div class="comparison-variance-stats">'
+    + '<div class="comparison-variance-stat"><div class="comparison-variance-stat-value">+$5.06M</div><div class="comparison-variance-stat-label">EAD Variance</div></div>'
+    + '<div class="comparison-variance-stat"><div class="comparison-variance-stat-value">1</div><div class="comparison-variance-stat-label">For Review</div></div>'
+    + '<div class="comparison-variance-stat"><div class="comparison-variance-stat-value">4</div><div class="comparison-variance-stat-label">Records</div></div>'
+    + '</div></div>'
+    + '<div class="dashboard-table-container"><table class="dashboard-table"><thead><tr>'
+    + '<th>Netting Set ID</th><th>Current EAD</th><th>Previous EAD</th><th>Variance</th><th>Variance %</th><th>Current RWA</th><th>Previous RWA</th><th>Capital Charge</th><th>Status</th>'
+    + '</tr></thead><tbody>'
+    + '<tr><td>NS-10234</td><td>$6.0M</td><td>$6.0M</td><td>$0</td><td>0.0%</td><td>$5.1M</td><td>$5.1M</td><td>$408K</td><td><span class="status-badge matched">Matched</span></td></tr>'
+    + '<tr><td>NS-10891</td><td>$1.7M</td><td>$1.64M</td><td>+$60K</td><td>3.7%</td><td>$1.4M</td><td>$1.36M</td><td>$112K</td><td><span class="status-badge minor-diff">Minor Diff</span></td></tr>'
+    + '<tr><td>NS-11420</td><td>$13.9M</td><td>$11.2M</td><td>+$2.7M</td><td>24.1%</td><td>$11.6M</td><td>$9.3M</td><td>$928K</td><td><span class="status-badge review">Review</span></td></tr>'
+    + '<tr><td>NS-12077</td><td>$2.3M</td><td>&mdash;</td><td>+$2.3M</td><td>&mdash;</td><td>$1.9M</td><td>&mdash;</td><td>$184K</td><td><span class="status-badge new">New</span></td></tr>'
+    + '<tr><td>NS-12345</td><td>$10.5M</td><td>$10.3M</td><td>+$200K</td><td>1.9%</td><td>$8.9M</td><td>$8.7M</td><td>$712K</td><td><span class="status-badge minor-diff">Minor Diff</span></td></tr>'
+    + '</tbody></table></div></div>'
 
-      <!-- Total Variance card (mirrors renderVarianceCard in saccrResultsView.sas) -->
-      <div class="comparison-variance-card">
-        <div class="comparison-variance-icon">
-          <i class="fas fa-balance-scale"></i>
-        </div>
-        <div class="comparison-variance-label">Total Variance</div>
-        <div class="comparison-variance-stats">
-          <div class="comparison-variance-stat">
-            <div class="comparison-variance-stat-value">+$5.06M</div>
-            <div class="comparison-variance-stat-label">EAD Variance</div>
-          </div>
-          <div class="comparison-variance-stat">
-            <div class="comparison-variance-stat-value">1</div>
-            <div class="comparison-variance-stat-label">For Review</div>
-          </div>
-          <div class="comparison-variance-stat">
-            <div class="comparison-variance-stat-value">4</div>
-            <div class="comparison-variance-stat-label">Records</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Comparison table -->
-      <div class="dashboard-table-container">
-        <table class="dashboard-table">
-          <thead><tr>
-            <th>Netting Set ID</th><th>Current EAD</th><th>Previous EAD</th>
-            <th>Variance</th><th>Variance %</th>
-            <th>Current RWA</th><th>Previous RWA</th>
-            <th>Capital Charge</th><th>Status</th>
-          </tr></thead>
-          <tbody>
-            <tr>
-              <td>NS-10234</td><td>$6.0M</td><td>$6.0M</td>
-              <td>$0</td><td>0.0%</td>
-              <td>$5.1M</td><td>$5.1M</td><td>$408K</td>
-              <td><span class="status-badge matched">Matched</span></td>
-            </tr>
-            <tr>
-              <td>NS-10891</td><td>$1.7M</td><td>$1.64M</td>
-              <td>+$60K</td><td>3.7%</td>
-              <td>$1.4M</td><td>$1.36M</td><td>$112K</td>
-              <td><span class="status-badge minor-diff">Minor Diff</span></td>
-            </tr>
-            <tr>
-              <td>NS-11420</td><td>$13.9M</td><td>$11.2M</td>
-              <td>+$2.7M</td><td>24.1%</td>
-              <td>$11.6M</td><td>$9.3M</td><td>$928K</td>
-              <td><span class="status-badge review">Review</span></td>
-            </tr>
-            <tr>
-              <td>NS-12077</td><td>$2.3M</td><td>&mdash;</td>
-              <td>+$2.3M</td><td>&mdash;</td>
-              <td>$1.9M</td><td>&mdash;</td><td>$184K</td>
-              <td><span class="status-badge new">New</span></td>
-            </tr>
-            <tr>
-              <td>NS-12345</td><td>$10.5M</td><td>$10.3M</td>
-              <td>+$200K</td><td>1.9%</td>
-              <td>$8.9M</td><td>$8.7M</td><td>$712K</td>
-              <td><span class="status-badge minor-diff">Minor Diff</span></td>
-            </tr>
-            <tr>
-              <td>NS-12890</td><td>$4.0M</td><td>$4.0M</td>
-              <td>$0</td><td>0.0%</td>
-              <td>$3.4M</td><td>$3.4M</td><td>$272K</td>
-              <td><span class="status-badge matched">Matched</span></td>
-            </tr>
-            <tr>
-              <td>NS-13001</td><td>$16.0M</td><td>$9.5M</td>
-              <td>+$6.5M</td><td>68.4%</td>
-              <td>$13.5M</td><td>$8.0M</td><td>$1.1M</td>
-              <td><span class="status-badge review">Review</span></td>
-            </tr>
-            <tr>
-              <td>NS-13450</td><td>$1.1M</td><td>&mdash;</td>
-              <td>+$1.1M</td><td>&mdash;</td>
-              <td>$0.9M</td><td>&mdash;</td><td>$72K</td>
-              <td><span class="status-badge new">New</span></td>
-            </tr>
-            <tr>
-              <td>NS-13789</td><td>$8.0M</td><td>$7.9M</td>
-              <td>+$100K</td><td>1.3%</td>
-              <td>$6.7M</td><td>$6.6M</td><td>$536K</td>
-              <td><span class="status-badge minor-diff">Minor Diff</span></td>
-            </tr>
-            <tr>
-              <td>NS-14022</td><td>$4.5M</td><td>$4.5M</td>
-              <td>$0</td><td>0.0%</td>
-              <td>$3.8M</td><td>$3.8M</td><td>$304K</td>
-              <td><span class="status-badge matched">Matched</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ── Tab 3: Exception Report ───────────────────────────────────────── -->
-    <div class="report-tab-panel" id="tab-saccr-exception">
-      <div class="dashboard-table-container">
-        <table class="dashboard-table">
-          <thead><tr>
-            <th>Error ID</th><th>Netting Set ID</th><th>Field</th>
-            <th>Error Type</th><th>Description</th><th>Severity</th><th>Status</th>
-          </tr></thead>
-          <tbody>
-            <tr>
-              <td>ERR-001</td><td>NS-11420</td><td>RWA</td>
-              <td>Calculation</td><td>RWA variance exceeds 10% review threshold</td>
-              <td><span class="status-badge high">High</span></td>
-              <td><span class="status-badge open">Open</span></td>
-            </tr>
-            <tr>
-              <td>ERR-002</td><td>NS-10891</td><td>Capital Charge</td>
-              <td>Warning</td><td>Minor rounding mismatch vs prior run</td>
-              <td><span class="status-badge low">Low</span></td>
-              <td><span class="status-badge open">Open</span></td>
-            </tr>
-            <tr>
-              <td>ERR-003</td><td>NS-13001</td><td>EAD</td>
-              <td>Missing</td><td>EAD value is null for current reporting period</td>
-              <td><span class="status-badge high">High</span></td>
-              <td><span class="status-badge open">Open</span></td>
-            </tr>
-            <tr>
-              <td>ERR-004</td><td>NS-12345</td><td>PFE</td>
-              <td>Warning</td><td>PFE increased by more than 5% from prior run</td>
-              <td><span class="status-badge medium">Medium</span></td>
-              <td><span class="status-badge pending">Pending</span></td>
-            </tr>
-            <tr>
-              <td>ERR-005</td><td>NS-13789</td><td>RC</td>
-              <td>Review</td><td>RC value requires manual sign-off</td>
-              <td><span class="status-badge medium">Medium</span></td>
-              <td><span class="status-badge pending">Pending</span></td>
-            </tr>
-            <tr>
-              <td>ERR-006</td><td>NS-14022</td><td>Asset Class</td>
-              <td>Invalid</td><td>Unrecognised asset class code received from source</td>
-              <td><span class="status-badge high">High</span></td>
-              <td><span class="status-badge open">Open</span></td>
-            </tr>
-            <tr>
-              <td>ERR-007</td><td>NS-10234</td><td>Number of Trades</td>
-              <td>Warning</td><td>Trade count differs from prior run by more than 10</td>
-              <td><span class="status-badge low">Low</span></td>
-              <td><span class="status-badge resolved">Resolved</span></td>
-            </tr>
-            <tr>
-              <td>ERR-008</td><td>NS-12890</td><td>RWA</td>
-              <td>Calculation</td><td>RWA recalculation required after rate update</td>
-              <td><span class="status-badge medium">Medium</span></td>
-              <td><span class="status-badge open">Open</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>`;
+    /* Tab 3 */
+    + '<div class="report-tab-panel" id="tab-saccr-exception">'
+    + '<div class="dashboard-table-container"><table class="dashboard-table"><thead><tr>'
+    + '<th>Error ID</th><th>Netting Set ID</th><th>Field</th><th>Error Type</th><th>Description</th><th>Severity</th><th>Status</th>'
+    + '</tr></thead><tbody>'
+    + '<tr><td>ERR-001</td><td>NS-11420</td><td>RWA</td><td>Calculation</td><td>RWA variance exceeds 10% review threshold</td><td><span class="status-badge high">High</span></td><td><span class="status-badge open">Open</span></td></tr>'
+    + '<tr><td>ERR-002</td><td>NS-10891</td><td>Capital Charge</td><td>Warning</td><td>Minor rounding mismatch vs prior run</td><td><span class="status-badge low">Low</span></td><td><span class="status-badge open">Open</span></td></tr>'
+    + '<tr><td>ERR-003</td><td>NS-13001</td><td>EAD</td><td>Missing</td><td>EAD value is null for current reporting period</td><td><span class="status-badge high">High</span></td><td><span class="status-badge open">Open</span></td></tr>'
+    + '<tr><td>ERR-004</td><td>NS-12345</td><td>PFE</td><td>Warning</td><td>PFE increased by more than 5% from prior run</td><td><span class="status-badge medium">Medium</span></td><td><span class="status-badge pending">Pending</span></td></tr>'
+    + '</tbody></table></div></div>';
 }
 
-/* ── Utility functions ────────────────────────────────────────────────────── */
+/* ─────────────────────────────────────────────────────────────────────────── *
+ * SHARED UTILITIES
+ * ─────────────────────────────────────────────────────────────────────────── */
 function viewHistory(title) {
   document.getElementById('modalTitle').textContent = title + ' — History';
-  document.getElementById('modalBody').innerHTML = `
-    <div style="background:#e0f2fe;color:#0369a1;padding:15px;border-radius:8px;">
-      <div style="font-size:1rem;font-weight:600;margin-bottom:8px;">No prior runs recorded in this mockup.</div>
-    </div>`;
+  document.getElementById('modalBody').innerHTML =
+    '<div style="background:#e0f2fe;color:#0369a1;padding:15px;border-radius:8px;">'
+    + '<div style="font-size:1rem;font-weight:600;">No prior runs recorded in this mockup.</div></div>';
   document.getElementById('reportModal').classList.add('show');
 }
-function closeModal()    { document.getElementById('reportModal').classList.remove('show'); }
-function showLoading()   { document.getElementById('loading').classList.add('show'); }
-function hideLoading()   { document.getElementById('loading').classList.remove('show'); }
+
+function closeModal()  { document.getElementById('reportModal').classList.remove('show'); }
+function showLoading() { document.getElementById('loading').classList.add('show'); }
+function hideLoading() { document.getElementById('loading').classList.remove('show'); }
+
 function showNotification(msg, type) {
-  const n = document.getElementById('notification');
+  var n = document.getElementById('notification');
   n.className = 'notification ' + type;
   document.getElementById('notification-text').textContent = msg;
   n.classList.add('show');
-  setTimeout(() => n.classList.remove('show'), 4000);
+  setTimeout(function(){ n.classList.remove('show'); }, 4000);
 }
 
-/* ── Wire up global listeners and boot ─────────────────────────────────────── */
-document.getElementById('reportModal').addEventListener('click', e => {
+/* ── Bootstrap ─────────────────────────────────────────────────────────────── */
+document.getElementById('reportModal').addEventListener('click', function(e) {
   if (e.target.id === 'reportModal') closeModal();
 });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
 showRoute('risk-categories');
 </script>

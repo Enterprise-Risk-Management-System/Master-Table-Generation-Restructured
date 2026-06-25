@@ -57,4 +57,47 @@
     put '  });';
     put '}';
 
+    /* ── Dataset availability summary modal ── */
+    put '// Shows the Dataset Availability Summary modal for the SAMA Q17 Data Preparation run.';
+    put '// available: array of dataset keys that are ready; pending: array that are not yet available.';
+    put 'function showDatasetStatusModal(available, pending) {';
+    put '  var modal = document.getElementById("reportModal");';
+    put '  var modalTitle = document.getElementById("modalTitle");';
+    put '  var modalBody = document.getElementById("modalBody");';
+    put '  if (!modal || !modalTitle || !modalBody) return;';
+    put '  modalTitle.textContent = "Dataset Availability Summary";';
+    put '  var html = "";';
+
+    put '  if (available.length > 0) {';
+    put '    html += "<div style=\"margin-bottom: 16px;\">";';
+    put '    html += "<div class=\"ds-modal-section-title\">Ready for Processing</div>";';
+    put '    available.forEach(function (k) {';
+    put '      html += "<div class=\"ds-modal-row-ready\">";';
+    put '      html += "<div class=\"ds-modal-icon-ready\">&#10003;</div>";';
+    put '      html += "<span>" + escapeHtml(DS_LABELS[k] || k) + "</span>";';
+    put '      html += "</div>";';
+    put '    });';
+    put '    html += "</div>";';
+    put '  }';
+
+    put '  if (pending.length > 0) {';
+    put '    html += "<div>";';
+    put '    html += "<div class=\"ds-modal-section-title\">Pending Data Availability</div>";';
+    put '    pending.forEach(function (k) {';
+    put '      html += "<div class=\"ds-modal-row-pending\">";';
+    put '      html += "<div class=\"ds-modal-icon-pending\">!</div>";';
+    put '      html += "<span>" + escapeHtml(DS_LABELS[k] || k) + "</span>";';
+    put '      html += "</div>";';
+    put '    });';
+    put '    html += "<div class=\"ds-modal-notice\">";';
+    put '    html += "The process cannot be executed until all selected datasets are available. ";';
+    put '    html += "Please verify the data preparation status and try again once the datasets are ready.";';
+    put '    html += "</div>";';
+    put '    html += "</div>";';
+    put '  }';
+
+    put '  modalBody.innerHTML = html;';
+    put '  modal.classList.add("show");';
+    put '}';
+
 %mend generate_javascript_modal;

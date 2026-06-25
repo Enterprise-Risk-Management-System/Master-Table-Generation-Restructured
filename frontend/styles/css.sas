@@ -33,6 +33,9 @@
     /* Report Results Panel (tabs, extra status badges) */
     %generate_results_panel_styles;
 
+    /* Dataset Selector Panel (SAMA Q17 Data Preparation) */
+    %generate_dataset_selector_styles;
+
     put '</style>';
 %mend generate_css_styles;
 
@@ -283,3 +286,70 @@
     put '.comparison-variance-stat-value { font-size: 1.05rem; font-weight: 700; color: #1f2937; line-height: 1.2; }';
     put '.comparison-variance-stat-label { font-size: 0.7rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.4px; margin-top: 2px; }';
 %mend generate_results_panel_styles;
+
+/* ============================================================================
+   DATASET SELECTOR STYLES
+   Used exclusively by the SAMA Q17 Data Preparation card.
+   All custom — no external icon libraries.
+   ============================================================================ */
+%macro generate_dataset_selector_styles;
+
+    /* Selector panel container */
+    put '.ds-panel { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px; margin-bottom: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }';
+    put '.ds-panel-header { font-size: 0.8rem; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #e5e7eb; }';
+
+    /* Individual option rows */
+    put '.ds-options { display: flex; flex-direction: column; gap: 3px; }';
+    put '.ds-option-row { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 6px; cursor: pointer; transition: background 0.15s ease; user-select: none; }';
+    put '.ds-option-row:hover { background: #f3f4f6; }';
+    put '.ds-option-row.ds-option-disabled { opacity: 0.45; cursor: not-allowed; pointer-events: none; }';
+    put '.ds-option-label { font-size: 0.9rem; color: #374151; font-weight: 500; }';
+
+    /* Custom checkbox square */
+    put '.ds-cb { width: 18px; height: 18px; border: 2px solid #d1d5db; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #ffffff; flex-shrink: 0; transition: background 0.15s ease, border-color 0.15s ease; }';
+    put '.ds-cb.ds-cb-checked { background: #3b82f6; border-color: #3b82f6; }';
+
+    /* Divider between options and ALL row */
+    put '.ds-all-divider { height: 1px; background: #e5e7eb; margin: 10px 0; }';
+
+    /* ALL row — visually distinct */
+    put '.ds-all-row { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; cursor: pointer; transition: background 0.15s ease; user-select: none; }';
+    put '.ds-all-row:hover { background: #dbeafe; }';
+    put '.ds-all-cb { border-color: #93c5fd; }';
+    put '.ds-all-cb.ds-cb-checked { background: #1d4ed8; border-color: #1d4ed8; }';
+    put '.ds-all-label { font-size: 0.9rem; font-weight: 700; color: #1d4ed8; letter-spacing: 0.5px; }';
+    put '.ds-all-desc { font-size: 0.78rem; color: #6b7280; margin-left: auto; }';
+
+    /* Panel footer with Done button */
+    put '.ds-panel-footer { display: flex; justify-content: flex-end; margin-top: 12px; padding-top: 10px; border-top: 1px solid #e5e7eb; }';
+    put '.ds-done-btn { padding: 7px 20px; background: #3b82f6; color: #ffffff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: background 0.2s ease; }';
+    put '.ds-done-btn:hover { background: #2563eb; }';
+
+    /* Select Datasets toggle button */
+    put '.ds-select-btn { padding: 10px 18px; border: 2px solid #3b82f6; border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 0.9rem; background: #ffffff; color: #3b82f6; transition: all 0.2s ease; }';
+    put '.ds-select-btn:hover { background: #eff6ff; }';
+    put '.ds-select-btn.ds-select-btn-active { background: #3b82f6; color: #ffffff; }';
+
+    /* Run button states */
+    put '.ds-run-btn { padding: 10px 20px; border: none; border-radius: 8px; font-weight: 500; font-size: 0.9rem; transition: all 0.2s ease; }';
+    put '.ds-run-disabled { background: #e5e7eb; color: #9ca3af; cursor: not-allowed; }';
+    put '.ds-run-active { background: #3b82f6; color: #ffffff; cursor: pointer; }';
+    put '.ds-run-active:hover { background: #2563eb; }';
+
+    /* Selection display — tag strip shown after Done */
+    put '.ds-display { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; padding: 8px 10px; background: #f9fafb; border-radius: 6px; border: 1px solid #e5e7eb; }';
+    put '.ds-display-label { font-size: 0.75rem; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }';
+    put '.ds-tags { display: flex; flex-wrap: wrap; gap: 5px; }';
+    put '.ds-tag { padding: 3px 10px; background: #dbeafe; color: #1d4ed8; border-radius: 12px; font-size: 0.78rem; font-weight: 600; }';
+
+    /* Availability modal rows */
+    put '.ds-modal-section-title { font-size: 0.78rem; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }';
+    put '.ds-modal-row-ready { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: #d1fae5; border-radius: 6px; margin-bottom: 5px; }';
+    put '.ds-modal-row-ready span { color: #065f46; font-weight: 500; font-size: 0.9rem; }';
+    put '.ds-modal-icon-ready { width: 20px; height: 20px; border-radius: 50%; background: #059669; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #ffffff; flex-shrink: 0; }';
+    put '.ds-modal-row-pending { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: #fef3c7; border-radius: 6px; margin-bottom: 5px; }';
+    put '.ds-modal-row-pending span { color: #92400e; font-weight: 500; font-size: 0.9rem; }';
+    put '.ds-modal-icon-pending { width: 20px; height: 20px; border-radius: 50%; background: #d97706; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #ffffff; flex-shrink: 0; }';
+    put '.ds-modal-notice { margin-top: 12px; padding: 12px 14px; background: #fef3c7; border-left: 4px solid #f59e0b; border-radius: 4px; font-size: 0.84rem; color: #92400e; line-height: 1.5; }';
+
+%mend generate_dataset_selector_styles;
