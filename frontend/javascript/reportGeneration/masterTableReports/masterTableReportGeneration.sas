@@ -149,9 +149,13 @@
     put '  viewReportHistory(reportType) {';
     put '    console.log("Viewing report history for:", reportType);';
     put '    MTUtils.showNotification("Report history feature coming soon", "info");';
+    put '  },';
+    put '  runSampleReport(reportType) {';
+    put '    MTSaccrResults.render(reportType, SACCR_SAMPLE_DATA);';
     put '  }';
     put '};';
     put '// Global functions for backward compatibility';
     put 'function generateRegulatoryReport(reportType) { MTReports.generateRegulatoryReport(reportType); }';
     put 'function viewReportHistory(reportType) { MTReports.viewReportHistory(reportType); }';
+    put 'function runSampleReport(reportType) { MTReports.runSampleReport(reportType); }';
 %mend masterTableReportGeneration;

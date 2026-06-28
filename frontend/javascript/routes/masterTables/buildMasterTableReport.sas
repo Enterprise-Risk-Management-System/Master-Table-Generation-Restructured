@@ -139,9 +139,13 @@
     put '    html += "<button onclick=\"generateRegulatoryReport(&apos;" + reportId + "&apos;)\" style=\"padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.3s ease; font-size: 0.9rem; background: #3b82f6; color: white;\" ";';
     put '    html += "onmouseover=\"this.style.background=&apos;#2563eb&apos;\" onmouseout=\"this.style.background=&apos;#3b82f6&apos;\">Run</button>";';
     put '  }';
+    put '  if (report.sampleData) {';
+    put '    html += "<button onclick=\"runSampleReport(&apos;" + reportId + "&apos;)\" style=\"padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.3s ease; font-size: 0.9rem; background: #10b981; color: white;\" ";';
+    put '    html += "onmouseover=\"this.style.background=&apos;#059669&apos;\" onmouseout=\"this.style.background=&apos;#10b981&apos;\">Sample Data</button>";';
+    put '  }';
     put '  html += "<button onclick=\"viewReportHistory(&apos;" + reportId + "&apos;)\" style=\"padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.3s ease; font-size: 0.9rem; background: #6b7280; color: white;\" ";';
     put '  html += "onmouseover=\"this.style.background=&apos;#4b5563&apos;\" onmouseout=\"this.style.background=&apos;#6b7280&apos;\">View History</button>";';
-    put '  html += "</div>";';
+    put '  html += "</div>";
 
     put '  html += "</div>";';
     put '  return html;';

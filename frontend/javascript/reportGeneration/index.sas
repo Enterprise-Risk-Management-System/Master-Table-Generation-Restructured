@@ -6,11 +6,14 @@
    ============================================================================ */
 %include "C:\Users\62917\Master_Table_Generation_Restructured\frontend\javascript\reportGeneration\masterTableReports\masterTableReportGeneration.sas";
 %include "C:\Users\62917\Master_Table_Generation_Restructured\frontend\javascript\reportGeneration\masterTableReports\saccrResultsView.sas";
+%include "C:\Users\62917\Master_Table_Generation_Restructured\frontend\javascript\reportGeneration\masterTableReports\saccrSampleData.sas";
 
-/* Bundles the SACCR/CVA results renderer and the generic report-run handler */
+/* Bundles the SACCR/CVA results renderer, sample data, and the generic report-run handler */
 %macro Report_Generation;
 
     %generate_saccr_results_view;
+
+    %saccrSampleData;
 
     %masterTableReportGeneration;
 

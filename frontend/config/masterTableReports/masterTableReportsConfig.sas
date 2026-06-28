@@ -13,6 +13,7 @@
     put '      title: "SACCR and CVA",';
     put '      description: "Quarterly regulatory report for SAMA compliance monitoring and risk assessment.",';
     put '      frequency: "Weekly / Monthly",';
+    put '      sampleData: true,';
     put '      fields: [{ id: "asof", label: "As of Date", type: "date" }]';
     put '    }';
     put '  ],';
