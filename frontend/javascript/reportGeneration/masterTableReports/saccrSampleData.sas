@@ -16,6 +16,7 @@
     put '    "number_of_trades": 48,';
     put '    "rc_net_margined_yl": "2,450,000",';
     put '    "pfe": "1,820,000",';
+    put '    "ead": "4,270,000",';
     put '    "saccr_charge": "875,000"';
     put '  }],';
 
@@ -26,32 +27,32 @@
     put '    "rwa": "1,600,000"';
     put '  }],';
 
-    /* ── summary_table: one row per netting set ── */
+    /* ── summary_table: one row per netting set — mirrors SACCR_SUMMARY dataset columns ── */
     put '  "summary_table": [';
     put '    {';
     put '      "netting_set_id": "NS001", "as_of_date": "2025-12-31", "number_of_trades": 8,';
-    put '      "replacement_cost": "450,000", "pfe": "320,000", "ead": "770,000",';
-    put '      "rwa": "1,925,000", "saccr_capital_charge": "154,000", "asset_class": "Interest Rate"';
+    put '      "notional_amount_lcy_abs": "5,200,000", "replacement_cost": "450,000",';
+    put '      "pfe": "320,000", "ead": "770,000", "rwa": "1,925,000", "saccr_capital_charge": "154,000"';
     put '    },';
     put '    {';
     put '      "netting_set_id": "NS002", "as_of_date": "2025-12-31", "number_of_trades": 6,';
-    put '      "replacement_cost": "280,000", "pfe": "195,000", "ead": "475,000",';
-    put '      "rwa": "1,187,500", "saccr_capital_charge": "95,000", "asset_class": "FX"';
+    put '      "notional_amount_lcy_abs": "3,800,000", "replacement_cost": "280,000",';
+    put '      "pfe": "195,000", "ead": "475,000", "rwa": "1,187,500", "saccr_capital_charge": "95,000"';
     put '    },';
     put '    {';
     put '      "netting_set_id": "NS003", "as_of_date": "2025-12-31", "number_of_trades": 12,';
-    put '      "replacement_cost": "620,000", "pfe": "480,000", "ead": "1,100,000",';
-    put '      "rwa": "2,750,000", "saccr_capital_charge": "220,000", "asset_class": "Credit"';
+    put '      "notional_amount_lcy_abs": "8,500,000", "replacement_cost": "620,000",';
+    put '      "pfe": "480,000", "ead": "1,100,000", "rwa": "2,750,000", "saccr_capital_charge": "220,000"';
     put '    },';
     put '    {';
     put '      "netting_set_id": "NS004", "as_of_date": "2025-12-31", "number_of_trades": 4,';
-    put '      "replacement_cost": "180,000", "pfe": "130,000", "ead": "310,000",';
-    put '      "rwa": "775,000", "saccr_capital_charge": "62,000", "asset_class": "Equity"';
+    put '      "notional_amount_lcy_abs": "2,100,000", "replacement_cost": "180,000",';
+    put '      "pfe": "130,000", "ead": "310,000", "rwa": "775,000", "saccr_capital_charge": "62,000"';
     put '    },';
     put '    {';
     put '      "netting_set_id": "NS005", "as_of_date": "2025-12-31", "number_of_trades": 18,';
-    put '      "replacement_cost": "920,000", "pfe": "695,000", "ead": "1,615,000",';
-    put '      "rwa": "4,037,500", "saccr_capital_charge": "323,000", "asset_class": "Commodity"';
+    put '      "notional_amount_lcy_abs": "12,600,000", "replacement_cost": "920,000",';
+    put '      "pfe": "695,000", "ead": "1,615,000", "rwa": "4,037,500", "saccr_capital_charge": "323,000"';
     put '    }';
     put '  ],';
 

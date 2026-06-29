@@ -24,12 +24,12 @@
     put '      { key: "netting_set_id", label: "Netting Set ID" },';
     put '      { key: "as_of_date", label: "Agreement Date" },';
     put '      { key: "number_of_trades", label: "Number of Trades" },';
+    put '      { key: "notional_amount_lcy_abs", label: "Notional Amount (LCY)" },';
     put '      { key: "replacement_cost", label: "RC" },';
     put '      { key: "pfe", label: "PFE" },';
     put '      { key: "ead", label: "EAD" },';
     put '      { key: "rwa", label: "RWA" },';
-    put '      { key: "saccr_capital_charge", label: "Capital Charge" },';
-    put '      { key: "asset_class", label: "Asset Class" }';
+    put '      { key: "saccr_capital_charge", label: "Capital Charge" }';
     put '    ],';
     put '    comparison: [';
     put '      { key: "netting_set_id", label: "Netting Set ID" },';
@@ -188,6 +188,7 @@
     put '        { key: "number_of_trades", label: "Trades" },';
     put '        { key: "rc_net_margined_yl", label: "RC" },';
     put '        { key: "pfe", label: "PFE" },';
+    put '        { key: "ead", label: "EAD" },';
     put '        { key: "saccr_charge", label: "SACCR Charge" }';
     put '      ]);';
     put '    }';
