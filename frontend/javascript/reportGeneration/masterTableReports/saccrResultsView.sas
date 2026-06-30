@@ -42,11 +42,13 @@
     put '      { key: "capital_charge", label: "Capital Charge" }';
     put '    ],';
     put '    exception: [';
-    put '      { key: "error_id", label: "Error ID" },';
-    put '      { key: "netting_set_id", label: "Netting Set ID" },';
-    put '      { key: "field", label: "Field" },';
-    put '      { key: "error_type", label: "Error Type" },';
-    put '      { key: "description", label: "Description" }';
+    put '      { key: "cva_as_of_date", label: "As of Date" },';
+    put '      { key: "cva_cpty_id", label: "Counterparty ID" },';
+    put '      { key: "cva_cpty_name", label: "Counterparty Name" },';
+    put '      { key: "cva_cpty_type_code", label: "Counterparty Type" },';
+    put '      { key: "cva_netting_set_id", label: "Netting Set ID" },';
+    put '      { key: "cva_primary_risk_drvr_code", label: "Risk Driver" },';
+    put '      { key: "x_custom_rule", label: "Custom Rule" }';
     put '    ]';
     put '  },';
 
@@ -122,9 +124,9 @@
     put '  },';
 
 
-    put '  // Keyword-scans an exception row''s error text to assign a severity level';
+    put '  // Keyword-scans x_custom_rule and risk driver to assign a severity level';
     put '  classifyExceptionSeverity(row) {';
-    put '    const text = ((row.error_type || "") + " " + (row.description || "")).toLowerCase();';
+    put '    const text = ((row.x_custom_rule || "") + " " + (row.cva_primary_risk_drvr_code || "")).toLowerCase();';
     put '    if (/missing|invalid|null|reject/.test(text)) return "High";';
     put '    if (/warning|review/.test(text)) return "Medium";';
     put '    return "Low";';

@@ -85,19 +85,25 @@
     put '    }';
     put '  ],';
 
-    /* ── exception_report: data quality issues flagged during processing ── */
+    /* ── exception_report: error records from SACCR_ERROR_TABLE ── */
     put '  "exception_report": [';
     put '    {';
-    put '      "error_id": "ERR001", "netting_set_id": "NS003", "field": "collateral_amount",';
-    put '      "error_type": "Missing Value", "description": "Collateral amount is null for this netting set"';
+    put '      "cva_as_of_date": "2025-12-31", "cva_cpty_id": "CPTY001",';
+    put '      "cva_cpty_name": "Counterparty Alpha", "cva_cpty_type_code": "CORP",';
+    put '      "cva_netting_set_id": "NS003", "cva_primary_risk_drvr_code": "IR",';
+    put '      "x_custom_rule": "Missing collateral amount for netting set"';
     put '    },';
     put '    {';
-    put '      "error_id": "ERR002", "netting_set_id": "NS005", "field": "trade_type",';
-    put '      "error_type": "Invalid Entry", "description": "Trade type code not recognized in reference table"';
+    put '      "cva_as_of_date": "2025-12-31", "cva_cpty_id": "CPTY002",';
+    put '      "cva_cpty_name": "Counterparty Beta", "cva_cpty_type_code": "BANK",';
+    put '      "cva_netting_set_id": "NS005", "cva_primary_risk_drvr_code": "FX",';
+    put '      "x_custom_rule": "Invalid trade type code in reference table"';
     put '    },';
     put '    {';
-    put '      "error_id": "ERR003", "netting_set_id": "NS002", "field": "margin_agreement",';
-    put '      "error_type": "Warning", "description": "Margin agreement expiry date is within 30 days"';
+    put '      "cva_as_of_date": "2025-12-31", "cva_cpty_id": "CPTY003",';
+    put '      "cva_cpty_name": "Counterparty Gamma", "cva_cpty_type_code": "SOV",';
+    put '      "cva_netting_set_id": "NS002", "cva_primary_risk_drvr_code": "CR",';
+    put '      "x_custom_rule": "Warning: margin agreement expiry within 30 days"';
     put '    }';
     put '  ]';
 
