@@ -149,6 +149,7 @@
     put '.notification.success { background: linear-gradient(135deg, #059669, #10b981); }';
     put '.notification.error { background: linear-gradient(135deg, #dc2626, #ef4444); }';
     put '.notification.warning { background: linear-gradient(135deg, #d97706, #f59e0b); }';
+    put '.notification.info { background: linear-gradient(135deg, #0369a1, #0ea5e9); }';
     put '.notification.show { transform: translateX(0); }';
 %mend generate_notification_styles;
 

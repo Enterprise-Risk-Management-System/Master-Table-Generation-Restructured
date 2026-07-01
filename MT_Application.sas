@@ -44,6 +44,7 @@
 
         %generate_javascript_routing;
 
+        put '</main>';
         put '</body>';
         put '</html>';
     run;

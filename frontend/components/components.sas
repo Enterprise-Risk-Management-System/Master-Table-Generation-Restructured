@@ -6,13 +6,13 @@
     put '<nav class="navbar">';
     put '<div class="nav-container">';
     put '<a href="#" class="nav-brand">';
-    put '<div class="logo"><i class="fas fa-shield-alt"></i></div>';
+    put '<div class="logo" style="font-weight:700; font-size:1rem; letter-spacing:0.5px;">ANB</div>';
     put '</a>';
     put '<ul class="nav-menu">';
     put "<li><a href='#risk-categories' onclick='showRoute(""#risk-categories""); return false;'>Risk Category</a></li>";
     put '</ul>';
     put '<div class="nav-user">';
-    put '<div class="user-avatar"><i class="fas fa-user"></i></div>';
+    put '<div class="user-avatar" style="font-size:13px; font-weight:700; color:white;">&#9679;</div>';
     put '<div class="user-info">';
     put "<div class='user-name'>&sysuserid</div>";
     put '</div>';
@@ -28,7 +28,7 @@
     put '<div class="page-header">';
     put '<div class="breadcrumb">';
     put '<a href="#risk-categories">Dashboard</a>';
-    put '<i class="fas fa-chevron-right"></i>';
+    put '<span style="font-size:0.8rem; color:#9ca3af;">&rsaquo;</span>';
     put '<span>Risk Management</span>';
     put '</div>';
     put '<h1 class="page-title">Risk Management Data Preparation</h1>';
@@ -79,5 +79,5 @@
    NOTIFICATION COMPONENT
    ============================================================================ */
 %macro generate_notification;
-    put '<div class="notification" id="notification"><i class="fas fa-check-circle"></i><span id="notification-text">Report generated successfully!</span></div>';
+    put '<div class="notification" id="notification"><span style="font-size:1rem; font-weight:700;">&#10003;</span><span id="notification-text">Report generated successfully!</span></div>';
 %mend generate_notification;

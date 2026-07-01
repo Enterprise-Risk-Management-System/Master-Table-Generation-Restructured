@@ -17,7 +17,7 @@
     put '    "<div id=\"" + promptCardsId + "\" style=\"display: block;\">" +';
     put '    "<div style=\"margin-bottom: 20px;\">" +';
     put '    "<button onclick=\"showRoute(&apos;#risk-categories&apos;)\" style=\"padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 0.9rem; background: #6b7280; color: white; transition: all 0.3s ease;\" " +';
-    put '    "onmouseover=\"this.style.background=&apos;#4b5563&apos;\" onmouseout=\"this.style.background=&apos;#6b7280&apos;\"><i class=\"fas fa-arrow-left\"></i> Back</button>" +';
+    put '    "onmouseover=\"this.style.background=&apos;#4b5563&apos;\" onmouseout=\"this.style.background=&apos;#6b7280&apos;\">&larr; Back</button>" +';
     put '    "</div>" +';
     put '    "<div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; margin-bottom: 30px;\">" +';
     put '    cards + "</div>" +';
@@ -41,8 +41,8 @@
     put '  html += "data-report=\"" + reportId + "\">";';
 
     put '  html += "<div style=\"display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px;\">";';
-    put '  html += "<div style=\"width: 50px; height: 50px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: white; flex-shrink: 0;\">";';
-    put '  html += "<i class=\"fas fa-chart-bar\"></i>";';
+    put '  html += "<div style=\"width: 50px; height: 50px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: white; flex-shrink: 0; letter-spacing: 0px;\">";';
+    put '  html += "&#9632;";';
     put '  html += "</div>";';
     put '  html += "<div style=\"flex: 1;\">";';
     put '  html += "<h3 style=\"font-size: 1.3rem; font-weight: 600; color: #1f2937; margin-bottom: 8px;\">" + title + "</h3>";';

@@ -17,7 +17,7 @@
     put '  const routeAttr = config.route ? " onclick=\"showRoute(&apos;" + config.route + "&apos;)\"" : "";';
     put '  let html = "<div class=\"risk-module\" data-module=\"" + config.key + "\" " + routeAttr + ">";';
     put '  html += "<div class=\"module-header\">";';
-    put '  html += "<div class=\"module-icon " + config.key + "\"><i class=\"" + config.iconClass + "\"></i></div>";';
+    put '  html += "<div class=\"module-icon " + config.key + "\" style=\"font-size:15px; font-weight:700; letter-spacing:0px;\">" + (config.iconChar || "&#9632;") + "</div>";';
     put '  html += "<h3 class=\"module-title\">" + config.title + "</h3>";';
     put '  html += "</div>";';
     put '  html += "<p class=\"module-description\">" + config.description + "</p>";';
